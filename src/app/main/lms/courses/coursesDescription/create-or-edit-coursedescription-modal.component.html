@@ -1,0 +1,174 @@
+<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form  [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Lesson') }}</span>
+            <span *ngIf="!this.id">{{ l('Create New Lesson') }}</span>
+          </h4>
+
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+          <div class="my-3">
+            <label class="form-label" for="courseSectionId">{{ l('courseSectionId') }}</label>
+            <ng-select
+                [items]=" section$ | async"
+                bindLabel="displayName"
+                bindValue="id"
+                placeholder="Select a category"
+                formControlName="courseSectionId"
+                required
+              ></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('Name') }}</label>
+            <input
+              type="text"
+     
+              id="name"
+              class="form-control"
+         formControlName="name"
+              name="Name"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="duration">{{ l('duration') }}</label>
+            <input
+              type="number"
+              id="duration"
+              class="form-control"
+         formControlName="duration"
+              name="duration"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="lessionType">{{ l('Lesson Type') }}</label>
+            <ng-select #lessionType
+            formControlName="lessionType" id="lessionType"
+           placeholder="Select an item">
+           <ng-option *ngFor="let item of lessontype" [value]="item">
+               {{ lessionTypeMapping[item] }}
+           </ng-option>
+       </ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="videoUrl">{{ l('videoUrl') }}</label>
+            <input
+              type="text"
+              id="videoUrl"
+              class="form-control"
+         formControlName="videoUrl"
+              name="videoUrl"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="summary">{{ l('summary') }}</label>
+            <input
+              type="text"
+              id="summary"
+              class="form-control"
+         formControlName="summary"
+              name="summary"
+            />
+          </div>
+          <div class="my-3">
+           
+                <label fd-form-label for="isFreeLesson">{{ l('isFreeLesson') }}</label>
+                <input
+                    type="checkbox"
+                    class="input-checkbox"
+                    formControlName="isFreeLesson"
+                    id="isFreeLesson"
+                    name="isFreeLesson"
+                />
+        </div>
+          <div class="my5">
+            <label class="form-label" for="order">{{ l('Order') }}</label>
+            <input
+              type="number"
+            
+              id="order"
+              class="form-control"
+             formControlName="order"
+              name="order"
+            />
+          </div>
+          <div class="my5">
+            <label class="form-label" for="caption">{{ l('caption') }}</label>
+            <input
+              type="text"
+              id="caption"
+              class="form-control"
+             formControlName="caption"
+              name="caption"
+            />
+          </div>
+          <!-- <div class="symbol symbol-65px symbol-circle mb-5">
+            <img [src]="attachmentUrl" alt="image">
+                                </div> -->
+
+          <!-- <div class="mb-5">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input
+                       
+                        class="form-control" type="file" id="Image"
+                        id="uploadProfilePicture"
+                        (change)="fileChangeEvent($event)"
+                        
+                        formControlName="courseImageUrl"
+                    />
+                    <label
+                        class="custom-file-label"
+                        #uploadProfilePictureInputLabel
+                        for="uploadProfilePicture"
+                    >
+                        {{ 'ChooseAFile' | localize }}
+                    </label>
+                </div>
+                <span class="form-text text-muted col-lg-12">
+                    {{ 'ProfilePicture_Change_Info' | localize: maxProfilPictureBytesUserFriendlyValue }}
+                </span>
+            </div>
+        </div> -->
+        <!-- <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            [resizeToWidth]="128"
+            format="png"
+            (imageCropped)="imageCroppedFile($event)"
+          
+        ></image-cropper> -->
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button
+            type="submit"
+            class="btn btn-primary blue"
+    
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+            (click)="save()"
+          >
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+        {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+ 
+</div>

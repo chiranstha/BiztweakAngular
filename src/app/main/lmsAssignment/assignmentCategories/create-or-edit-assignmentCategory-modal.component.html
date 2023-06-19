@@ -1,0 +1,104 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Assignment category') }}</span>
+            <span *ngIf="!this.id">{{ l('Create New Assignment category') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        
+        <div class="modal-body">
+          <div class="my-3">
+                <label for="businessPhaseId">Business Phase <span class="required-field">*</span></label>
+                <ng-select #businessPhase 
+                (keyup.enter)="shortCutOnEnter('businessPhase')"
+                bindLabel="displayName" [items]=" business$ | async" id="businessPhaseId"
+                  name="businessPhaseId" formControlName="businessPhaseId" bindValue="id"
+                  placeholder="Select Business Phase" required [readonly]="this.id"></ng-select>
+              </div> 
+
+              <div class="my-3">
+                <label for="assignmentTypeId">Assignment Type <span class="required-field">*</span></label>
+                <ng-select #AssignmentType 
+                (keyup.enter)="shortCutOnEnter('AssignmentType')"
+                bindLabel="displayName" [items]=" assignmentType$ | async" id="assignmentTypeId"
+                  name="assignmentTypeId" formControlName="assignmentTypeId" bindValue="id"
+                  placeholder="Select Business Phase" required [readonly]="this.id"></ng-select>
+              </div> 
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('Name') }} <span class="required-field">*</span></label>
+            <input
+            #nameRef
+            (keyup.enter)="shortCutOnEnter('nameRef')"
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              required
+              [ngClass]="{'is-invalid': form.get('name').invalid && (form.get('name').dirty || form.get('name').touched),
+              'is-valid': form.get('name').valid && (form.get('name').dirty || form.get('name').touched)}"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="order">{{ l('order') }} <span class="required-field">*</span></label>
+            <input
+            #orderRef
+            (keyup.enter)="shortCutOnEnter('orderRef')"
+              type="number"
+              id="order"
+              class="form-control"
+              formControlName="order"
+              required
+              [ngClass]="{'is-invalid': form.get('order').invalid && (form.get('order').dirty || form.get('order').touched),
+              'is-valid': form.get('order').valid && (form.get('order').dirty || form.get('order').touched)}"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="shortDescription">{{ l('shortDescription') }} <span class="required-field">*</span></label>
+            <input
+              type="text"
+              #shortDesRef
+              (keyup.enter)="shortCutOnEnter('shortDesRef')"
+              id="shortDescription"
+              class="form-control"
+              formControlName="shortDescription"
+              required
+              [ngClass]="{'is-invalid': form.get('shortDescription').invalid && (form.get('shortDescription').dirty || form.get('shortDescription').touched),
+              'is-valid': form.get('shortDescription').valid && (form.get('shortDescription').dirty || form.get('shortDescription').touched)}"
+            />
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button
+            type="submit"
+            class="btn btn-primary blue"
+            [disabled]="this.form.invalid"
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+            (click)="save()"
+          >
+            <i class="fa fa-save" ></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+           {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+</div>
+
+

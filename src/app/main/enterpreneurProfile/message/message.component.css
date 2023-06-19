@@ -1,0 +1,168 @@
+.entMess{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.log {
+    width: 16px;
+    height: 30px;
+    background: #CABDFF;
+    border-radius: 4px;
+    position: relative;
+  }
+  .MessSec{
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+
+  .search-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    gap: 10px;
+    width: 316px;
+    height: 48px;
+    background: #F4F4F4;
+    border-radius: 12px;
+  }
+  
+  .search-box input[type="text"] {
+    flex: 1;
+    height: 100%;
+    padding: 8px;
+    border-radius: 12px;
+    border: none;
+  }
+  
+.MessageRT{
+    display: flex;
+    justify-content: space-between;
+}
+.CourseTask{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+  
+.mentorsBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+border-radius: 0px;
+background-color: #00c2ca;
+}
+.mentorsBtn .btn{
+    border-radius: 0px;
+    background-color:#fcfcfc;
+}
+.message-field {
+    position: relative; /* add position property */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    height: 40px;
+  }
+  .message-field textarea {
+    flex: 1;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    resize: none;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 30px;
+  }
+  
+  .message-field textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #008CBA;
+  }
+  .message-field button {
+    position: absolute;
+    right: 100%; 
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #008CBA;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .message-field button:hover {
+    background-color: #005F6B;
+  }
+  
+  .message-field button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #008CBA;
+  }
+  
+  .message-field button i {
+    margin-right: 10px;
+  }
+  
+  .message-field button span {
+    margin-left: 10px;
+  }
+  .messa img{
+    border-radius: 50%;
+  }
+  .popup-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .icon {
+    cursor: pointer;
+  }
+  
+  .popup {
+    position: absolute;
+    top: 100%;
+    left: -150px;
+    width: 200px; 
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+  }
+  
+  .popup h4 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .popup h4 i {
+    margin-right: 10px;
+  }
+  
+  .popup a:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .popup.show {
+    display: block;
+  }
+  

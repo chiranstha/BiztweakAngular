@@ -1,0 +1,142 @@
+﻿<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Instructor') }}</span>
+            <span *ngIf="!this.id">{{ l('Create Instructor') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+          <div class="my-3">
+            <label  class="form-label" for="userType">{{ l('userType') }}
+              <span class="required-field">*</span></label>
+            <ng-select 
+            #userRef (keyup.enter)="shortCutOnEnter('userRef')"
+            formControlName="userType" id="userType" placeholder="Select an item">
+              <ng-option *ngFor="let item of usertype" [value]="item">
+                {{ userTypeLabelMapping[item] }}
+              </ng-option>
+            </ng-select>
+
+            <div *ngIf="
+                                                                form.get('userType').invalid &&
+                                                                (form.get('userType').dirty || form.get('userType').touched)
+                                                            ">
+
+              <div class="alert alert-primary d-flex align-items-center p-5">
+                <h4 class="mb-1 text-dark">required</h4>
+              </div>
+            </div>
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="industryId">{{ l('industryId') }} <span
+                class="required-field">*</span></label>
+            <ng-select #industry (keyup.enter)="shortCutOnEnter('industry')" [items]="industry$ | async"
+              bindLabel="displayName" bindValue="id" formControlName="industryId" placeholder="Select an industry"
+              required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="incubatorId">{{ l('incubatorId') }} <span
+                class="required-field">*</span></label>
+            <ng-select #industry (keyup.enter)="shortCutOnEnter('industry')" [items]="incubator$ | async"
+              bindLabel="displayName" bindValue="id" formControlName="incubatorId" placeholder="Select an incubator"
+              required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('Name') }} <span class="required-field">*</span></label>
+            <input #nameRef (keyup.enter)="shortCutOnEnter('nameRef')" type="text" id="name" class="form-control"
+              formControlName="name"
+               [ngClass]="{'is-invalid': form.get('name').invalid && (form.get('name').dirty || form.get('name').touched),
+                        'is-valid': form.get('name').valid && (form.get('name').dirty || form.get('name').touched)}" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="address">{{
+              l('address') }} <span class="required-field">*</span></label>
+            <input #addressRef (keyup.enter)="shortCutOnEnter('addressRef')" type="text" id="address"
+              class="form-control" formControlName="address"
+              [ngClass]="{'is-invalid': form.get('address').invalid && (form.get('address').dirty || form.get('address').touched),
+                        'is-valid': form.get('address').valid && (form.get('address').dirty || form.get('address').touched)}" />
+
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="jobExpreience">{{ l('jobExprience') }} <span
+                class="required-field">*</span></label>
+            <input #jobRef (keyup.enter)="shortCutOnEnter('jobRef')" type="text" id="jobExpreience" class="form-control"
+              formControlName="jobExpreience"
+              [ngClass]="{'is-invalid': form.get('jobExpreience').invalid && (form.get('jobExpreience').dirty || form.get('jobExpreience').touched),
+              'is-valid': form.get('jobExpreience').valid && (form.get('jobExpreience').dirty || form.get('jobExpreience').touched)}" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="qualification">{{ l('qualification') }} <span
+                class="required-field">*</span></label>
+            <input #QualificationRef (keyup.enter)="shortCutOnEnter('QualificationRef')" type="text" id="qualification"
+              class="form-control" formControlName="qualification"
+              [ngClass]="{'is-invalid': form.get('qualification').invalid && (form.get('qualification').dirty || form.get('qualification').touched),
+              'is-valid': form.get('qualification').valid && (form.get('qualification').dirty || form.get('qualification').touched)}" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="email">{{ l('email') }} <span class="required-field">*</span></label>
+            <input #emailRef (keyup.enter)="shortCutOnEnter('emailRef')" type="email" id="email" class="form-control"
+              formControlName="email" [ngClass]="{'is-invalid': form.get('email').invalid && (form.get('email').dirty || form.get('email').touched),
+              'is-valid': form.get('email').valid && (form.get('email').dirty || form.get('email').touched)}" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="phone">{{ l('phone') }} <span class="required-field">*</span></label>
+            <input #phoneRef (keyup.enter)="shortCutOnEnter('phoneRef')" type="number" id="phone" class="form-control"
+              formControlName="phone" [ngClass]="{'is-invalid': form.get('phone').invalid && (form.get('phone').dirty || form.get('phone').touched),
+              'is-valid': form.get('phone').valid && (form.get('phone').dirty || form.get('phone').touched)}" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="shortDescription">{{ l('shortDescription') }} <span
+                class="required-field">*</span></label>
+            <input #shortDesRef (keyup.enter)="shortCutOnEnter('shortDesRef')" type="text" id="shortDescription"
+              class="form-control" formControlName="shortDescription"
+              [ngClass]="{'is-invalid': form.get('shortDescription').invalid && (form.get('shortDescription').dirty || form.get('shortDescription').touched),
+              'is-valid': form.get('shortDescription').valid && (form.get('shortDescription').dirty || form.get('shortDescription').touched)}" />
+          </div>
+          <div class="symbol symbol-65px symbol-circle mb-5">
+            <img [src]="photoUrl" alt="image">
+          </div>
+          <div class="mb-5">
+            <div class="input-group">
+              <div class="custom-file">
+                <input class="form-control" type="file" id="Image" id="uploadProfilePicture"
+                  (change)="fileChangeEvent($event)" formControlName="photoUrl" />
+                <label class="custom-file-label" #uploadProfilePictureInputLabel for="uploadProfilePicture">
+                  {{ 'ChooseAFile' | localize }}
+                </label>
+              </div>
+              <span class="form-text text-muted col-lg-12">
+                {{ 'ProfilePicture_Change_Info' | localize: maxProfilPictureBytesUserFriendlyValue }}
+              </span>
+            </div>
+          </div>
+          <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+            [resizeToWidth]="128" format="png" (imageCropped)="imageCroppedFile($event)"></image-cropper>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button type="submit" class="btn btn-primary blue" 
+      
+           [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')" (click)="save()">
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+        {{this.form.getRawValue()|json}}
+        <!-- [disabled]="this.form.invalid" -->
+      </form>
+    </div>
+  </div>
+</div>

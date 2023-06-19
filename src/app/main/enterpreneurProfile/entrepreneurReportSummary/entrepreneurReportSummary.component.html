@@ -1,0 +1,514 @@
+<div class="container-fluid" >
+  <div class="row justify-content-center">
+    <div class="col-xl-4 mb-xl-10">
+      <div class="card card-flush h-xl-100">
+        <!--begin::Header-->
+        <div class="card-header pt-7">
+          <!--begin::Title-->
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Company Information</span>
+
+          </h3>
+
+        </div>
+        <div class="card-body pt-4 px-0">
+
+
+          <!--begin::Tab Content-->
+          <div class="tab-content px-9 hover-scroll-overlay-y pe-7 me-3 mb-2" style="height: 390px">
+
+            <!--begin::Wrapper-->
+            <div class="w-150">
+
+              <accordion>
+                <accordion-item *ngFor="let items of companyList">
+                  <ng-template accordionTitle>
+                    <div class="d-flex space-x-2 gap-15">
+                      <p>{{items.name}}</p>
+
+                    </div>
+
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="p-4">
+                      <div class="d-flex border border-gray-300 border-dashed rounded p-4 mb-4">
+                        <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                          <div class="symbol symbol-50px me-4" *ngIf="items.logoByte">
+                            <span class="symbol-label">
+                          <img src="data:image/jpeg;base64, {{ items.logoByte}}" alt="{{items.name}}" height="60" width="60">
+                            </span>
+                          </div>
+                          <div class="me-2">
+                            <a
+                              class="text-gray-800 text-hover-primary fs-6 fw-bold">{{items.serviceDescription}}</a>
+
+                            <span class="text-gray-400 fw-bold d-block fs-7">{{items.location}}</span>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button (click)="NavigateToReportSummary(items.id)" type="button" class="btn btn-primary"
+                            style="background-color: #00C2CB; width: 150px; color: white; margin-bottom: 10px;"><i
+                              class="fa-duotone fa-memo"></i> View Biz Report</button>
+                        </div>
+                        <!--end::Info-->
+
+                      </div>
+                    </div>
+                  </ng-template>
+                </accordion-item>
+
+              </accordion>
+            </div>
+            <!--end::Wrapper-->
+
+          </div>
+          <!--end::Tab Content-->
+        </div>
+        <!--end: Card Body-->
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="mt-3">Report Summary <a target="_blank" class="btn btn-sm btn-info float-end"
+              href="https://biztweak.org.za/303/report-summary/download">Download
+              Report</a></h3>
+              <p class="d-flex"><i class="fa fa-info me-3"></i> I have an idea but don't know what to do next</p>
+          <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [yAxisLabel]="yAxisLabel">
+          </ngx-charts-bar-vertical>
+          <br>
+          <div class="full-report row my-5">
+            <div class="col-12">
+              <h4>Full Report</h4>
+            </div>
+            <div class="row">
+              <div class="col-6" *ngFor="let report of GrowthPlanReport">
+                <div class="card shadow-sm">
+  
+                  <div class="card-body" >
+                    <accordion>
+                      <accordion-item  >
+                        <ng-template accordionTitle>
+                          <p>{{report.assignmentTypeName}}</p>
+  
+                        </ng-template>
+                        <ng-template accordionContent>
+                          <p style="padding: 10px;">Business Diagnosis</p>
+                          <div class="card-body">
+                            <!-- Priority Element  -->
+  
+                            <accordion>
+                              <accordion-item *ngFor="let priorityiItems of report.priorityDetail">
+                                <ng-template accordionTitle>
+                                 
+                                  <p>{{priorityiItems.priorityName}}</p>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                  <div class="card shadow-sm mt-3 mb-5">
+  
+                                    <div class="card-body">
+                                      <ul class="list-group">
+  
+  
+                                        <li class="list-group-item" *ngFor="let item of priorityiItems.categoryDetail">
+                                          <h5>{{item.categoryName}} <span
+                                              class="badge float-end rounded-pill bg-primary">{{item.percent}}%</span>
+                                          </h5>
+                                          <div class="clearfix"></div>
+                                          <ul class="list-group " *ngFor="let detail of item.assignmentDetail">
+                                            <div
+                                              class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger" *ngIf="!detail.isOptionSelected">
+                                              <p class="mb-0 color-code">{{detail.assignmentAnswer}}</p>
+                                            </div>
+                                            <div
+                                              class="list-group-item d-flex justify-content-between align-items-start  list-group-item-success" *ngIf="detail.isOptionSelected">
+                                              <p class="mb-0 color-code">{{detail.assignmentAnswer}}</p>
+                                            </div>
+                                          </ul>
+                                        </li>
+  
+                                        <br>
+                                      </ul>
+                                    </div>
+  
+                                  </div>
+                                  
+                                </ng-template>
+  
+                              </accordion-item>
+  
+                            </accordion>
+  
+                          </div>
+                        </ng-template>
+                      </accordion-item>
+  
+                    </accordion>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+
+      </div>
+      <div class="card shadow-sm mb-5">
+
+        <div class="card-body">
+          <div class="recommendations bg-primary-light row">
+            <div class="row my-3">
+
+              <div class="alert rounded-0 bg-primary text-center text-white p-4 mb-5">
+                <div class="row justify-content-center">
+                  <h2>Modules Recommendation </h2> <br>
+                  <p class="col-md-7 mb-0">
+                    The following are the topics and learning content you need to read and implement
+                    in order to improve the processes, systems in your bussiness, as well as
+                    bussiness perfomance
+                  </p>
+                </div>
+              </div>
+            </div>
+<div class="row">
+  <div class="col-6 mb-5" *ngFor="let items of moduleRecommendationdata">
+    <accordion>
+      <accordion-item>
+        <ng-template accordionTitle>
+          <div class="d-flex space-x-2 gap-15">
+            <p><i
+              class="fa-duotone fa-briefcase"></i>&nbsp;  {{items.name}}</p>
+
+          </div>
+
+        </ng-template>
+        <ng-template accordionContent *ngFor="let details of items.courseDetail">
+          <div class="p-4" style="margin-left: 20%;">
+            {{details.name}}
+          </div>
+        </ng-template>
+      </accordion-item>
+
+    </accordion>
+  </div>
+</div>
+
+
+
+      
+                <div class="alert rounded-0 bg-primary text-center text-white p-4 mb-5">
+                  <div class="row justify-content-center">
+                    <h2>Jobs/Job Opportunities</h2>
+                    <br>
+                    <p class="col-md-7 mb-0">
+                      The following are professionals you need in order to improve the processes, systems in your
+                      bussiness, as well as
+                      bussiness perfomance.
+                    </p>
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-5 mb-5">
+                
+                    <accordion>
+                      <accordion-item>
+                        <ng-template accordionTitle>
+                          <div class="d-flex space-x-2 gap-15">
+                            <p><img src="https://biztweak.org.za/new/images/skills.png" class="me-3 rounded-circle img-fluid" style="height: 35px;width: 35px;" alt="">
+                               Skills Required to the business
+                              </p>
+                
+                          </div>
+                
+                        </ng-template>
+                        <ng-template accordionContent>
+                          <div class="p-4" style="margin-left: 20%;"  *ngFor="let items of jobData">
+             {{items.name}}
+                          </div>
+                        </ng-template>
+                      </accordion-item>
+                
+                    </accordion>
+                  </div>
+                </div>
+                <div class="mt-4 col-12 text-center">
+                  <button class="mt-3 btn btn-info px-5" data-bs-toggle="modal" data-bs-target="#plans-modal"
+                    (click)="entrepreneurCoursemodal.show()">Get Free
+                    Courses
+                  </button>
+                </div>
+                
+
+
+<!-- <div class="row">
+  <div class="col-5 mb-5">
+    <accordion>
+      <accordion-item *ngFor="let items of companyList">
+        <ng-template accordionTitle>
+          <div class="d-flex space-x-2 gap-15">
+            <p>{{items.name}}</p>
+
+                          <accordion>
+                            <accordion-item>
+                              <ng-template accordionTitle>
+                               
+                                  <p>Priority Element</p>
+                              </ng-template>
+                              <ng-template accordionContent>
+                                <div class="card shadow-sm mt-3 mb-5">
+
+                                  <div class="card-body">
+                                    <ul class="list-group">
+
+
+                                      <li class="list-group-item">
+                                        <h5>Value proposition <span
+                                            class="badge float-end rounded-pill bg-primary">0%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group ">
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Problem being solved not determined</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Value being delivered not determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Customer needs have not been determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Unique selling point not determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">No elevator pitch</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+
+                                      <br>
+
+
+
+                                      <br>
+
+
+
+                                      <br>
+
+                                      <li class="list-group-item">
+                                        <h5>Cost structure <span
+                                            class="badge float-end rounded-pill bg-primary">100%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group ">
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">Cost of sales has been determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">Cos of sales has been determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">Cost of customer retention determined</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">cost of market penetration has been determined.
+                                            </p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">The business has an Accountant.</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+
+                                      <br>
+
+
+                                      <li class="list-group-item">
+                                        <h5>Revenue Streams <span
+                                            class="badge float-end rounded-pill bg-primary">20%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group ">
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Ways of generating revenue from each customer not
+                                              determined</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Value customers are willing to pay for not
+                                              determined</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Current payment trends of customers not known</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+                                            <p class="mb-0 color-code">Preferred payment method of customers not
+                                              determined.</p>
+                                          </div>
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+                                            <p class="mb-0 color-code">The business has a Business Strategist.</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+
+                                      <br>
+
+
+                                      <li class="list-group-item">
+                                        <h5>Customer segments<span
+                                            class="float-end badge bg-primary rounded-pill">22%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group">
+
+
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Customer profile not determined</p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Target audience has not been selected</p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Target audience has not been located
+                                              geographically</p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Target audience has not been segmented.</p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Total accessible market has not been determined
+                                            </p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Total observable market has not been determined.
+                                            </p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Ideal customer profile has not been determined.
+                                            </p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+
+                                            <p class="color-code mb-0">Most important determined.</p>
+                                          </div>
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
+
+                                            <p class="color-code mb-0">The business has a Customer Researcher
+                                              Specialist.</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+                                      <br>
+
+
+
+                                      <br>
+
+
+                                      <li class="list-group-item">
+                                        <h5>Key resources<span class="float-end badge bg-primary rounded-pill">0%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group ">
+
+
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">Key resources needed have not been determined</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+
+                                      <br>
+
+
+                                      <li class="list-group-item">
+                                        <h5>Proof of concept<span
+                                            class="float-end badge bg-primary rounded-pill">0%</span>
+                                        </h5>
+                                        <div class="clearfix"></div>
+                                        <ul class="list-group ">
+
+
+
+                                          <div
+                                            class="list-group-item d-flex justify-content-between align-items-start list-group-item-danger">
+
+                                            <p class="color-code mb-0">The sales price for the product/service has not
+                                              been determined by customers</p>
+                                          </div>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </div>
+
+                                </div>
+                                
+                              </ng-template>
+
+                            </accordion-item>
+
+                          </accordion>
+
+                        </div>
+                      </ng-template>
+                    </accordion-item>
+
+                  </accordion>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> -->
+
+<entrepreneurCoursemodal #entrepreneurCoursemodal></entrepreneurCoursemodal>

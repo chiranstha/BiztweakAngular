@@ -1,0 +1,88 @@
+﻿<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-content">
+        <form [formGroup]="form" autocomplete="off">
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <span *ngIf="this.id">{{ l('Edit Entrepreneur Attendance') }}</span>
+              <span *ngIf="!this.id">{{ l('Create New Entrepreneur Attendance') }}</span>
+            </h4>
+            <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card shadow-sm">
+
+              <div class="card-body">
+                <div class="my-3">
+                  <label for="date" class="col-md-12 form-label">date</label>
+                  <input id="date" type="text" #SampleDatePicker name="date" class="form-control" formControlName="date"
+                    bsDatepicker datePickerLuxonModifier [(date)]="sampleDate"
+                    [bsConfig]="{ adaptivePosition: true }" />
+                </div>
+                <div class="my-3">
+                  <label for="course">Select Course</label>
+                  <ng-select #class bindLabel="displayName" [items]="course$ | async" id="courseId" name="courseId"
+                    formControlName="courseId" bindValue="id" placeholder="Select items" required
+                    [readonly]="this.id"></ng-select>
+                </div>
+                <div class="my-3">
+                  <label for="course">Select Instructors</label>
+                  <ng-select #class bindLabel="displayName" [items]="instructor$ | async" id="instructorsId"
+                    name="instructorsId" formControlName="instructorsId" bindValue="id" placeholder="Select items"
+                    required [readonly]="this.id"></ng-select>
+                </div>
+                <div class="my-3">
+                  <label class="form-label" for="narration">{{ l('narration') }}</label>
+                  <input type="text" id="narration" class="form-control" formControlName="narration" />
+                </div>
+                <!-- Form Array  -->
+                <div class="table table-bordered table-sm table-hover" formArrayName="details">
+                 
+               
+                <div class="card shadow-sm">
+               
+                  <div class="card-header">
+                    <h3 class="card-title">Details</h3>
+                    <div class="card-toolbar">
+                      <button type="button" class="btn btn-primary blue" (click)="addDetails()">
+                        <i class="fa-duotone fa-circle-plus"></i> Add
+                      </button>
+                    </div>
+                    
+                  </div>
+                  <div *ngFor="let assign of Detail().controls; let empIndex = index"
+                  [formGroupName]="empIndex" class="carrd">
+                  <div class="card-body mt-3">
+                    <div class="my-3">
+                      <label class="form-label" for="remark">{{ l('remark') }}</label>
+                      <input type="text" id="remark" class="form-control" formControlName="remark" />
+                    </div>
+                    <div class="my-3">
+                      <label fd-form-label for="status">{{ l('status') }}</label>
+                      <input type="checkbox" class="input-checkbox" formControlName="status" id="status"
+                        name="status" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel')
+              }}</button>
+            <button type="submit" class="btn btn-primary blue" (click)="save()">
+              <i class="fa fa-save"></i>
+              <span>{{ l('Save') }}</span>
+            </button>
+          </div>
+          {{this.form.getRawValue()|json}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

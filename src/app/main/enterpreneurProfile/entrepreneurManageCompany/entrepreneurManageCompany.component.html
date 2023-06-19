@@ -1,0 +1,101 @@
+
+<div class="EntComp">
+  <section id="profile">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-4 mb-xl-10">
+
+            <div class="card card-flush h-xl-100">
+                <!--begin::Header-->
+                <div class="card-header pt-7">
+                  <!--begin::Title-->
+                  <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label fw-bold text-gray-800">Company Information</span>
+        
+                  </h3>
+        
+                </div>
+                <div class="card-body pt-4 px-0">
+        
+        
+                  <!--begin::Tab Content-->
+                  <div class="tab-content px-9 hover-scroll-overlay-y pe-7 me-3 mb-2" style="height: 390px">
+        
+                    <!--begin::Wrapper-->
+                    <div class="w-150">
+        
+                      <accordion>
+                        <accordion-item *ngFor="let items of companyList">
+                          <ng-template accordionTitle>
+                            <div class="d-flex space-x-2 gap-15">
+                              <p>{{items.name}}</p>
+        
+                            </div>
+        
+                          </ng-template>
+                          <ng-template accordionContent>
+                            <div class="p-4">
+                              <div class="d-flex border border-gray-300 border-dashed rounded p-4 mb-4">
+                                <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                                  <div class="symbol symbol-50px me-4" *ngIf="items.logoByte">
+                                    <span class="symbol-label">
+                                  <img src="data:image/jpeg;base64, {{ items.logoByte}}" alt="{{items.name}}" height="60" width="60">
+                                    </span>
+                                  </div>
+                                  <div class="me-2">
+                                    <a
+                                      class="text-gray-800 text-hover-primary fs-6 fw-bold">{{items.serviceDescription}}</a>
+        
+                                    <span class="text-gray-400 fw-bold d-block fs-7">{{items.location}}</span>
+                                  </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <button (click)="NavigateToReportSummary(items.id)" type="button" class="btn btn-primary"
+                                    style="background-color: #00C2CB; width: 150px; color: white; margin-bottom: 10px;"><i
+                                      class="fa-duotone fa-memo"></i> View Biz Report</button>
+                                </div>
+                                <!--end::Info-->
+        
+                              </div>
+                            </div>
+                          </ng-template>
+                        </accordion-item>
+        
+                      </accordion>
+                    </div>
+                    <!--end::Wrapper-->
+        
+                  </div>
+                  <!--end::Tab Content-->
+                </div>
+                <!--end: Card Body-->
+              </div>
+      </div>
+        <div class="col-8 mt-5">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="alert alert-success mt-4">
+                <strong><i class="fa fa-check"></i> SUCCESS!</strong> Company Assessment Completed.
+              </div>
+              <div class="alert alert-info mt-4">
+                <strong><i class="fa fa-check"></i> SUCCESS!</strong> Complete your Company Profile.
+ 
+              </div>
+              <div class="alert alert-primary mt-4">
+                <strong><i class="fa fa-check"></i> Congratulations!</strong> Your report is
+                ready.
+             
+            </div>
+            <h2>Business Health Report</h2>
+            <p>In this nicely designed report you can check your business factors in graphical way
+                and understand easily, moreover you will also get recommendations from our system
+                based on the assessment.</p>
+                <a class="btn btn-info"  (click)="NavigateToReportSummary(id)"><i class="fa fa-file-alt" ></i> View Biz Report</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

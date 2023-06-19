@@ -1,0 +1,663 @@
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class=" container-xxl " id="kt_content_container">
+      <!-- Instructor Dashboard -->
+      <div class="row gy-5 g-xl-10 mt-4">
+        <div class="dashboard d-flex gap-3">
+            <div class="log">
+            </div>
+            <h4>Overview</h4>
+          </div>
+      
+        <div class="col-xl-3">
+          <div class="card card-xl-stretch mb-xl-10 theme-dark-bg-body" style="background-color: #d7e5eb">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center h-100">
+                <div class="cont">
+                  <i class="fa-duotone fa-users"></i>
+                </div>
+            
+                <a  (click)="NavigateToEntrepreneur()" class="text-dark text-hover-primary fw-bold fs-3">Enterpreneurs &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+              </div>
+              
+              <div class="pt-5">
+                <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+              </div>
+              <!--end::Stats-->
+            </div>
+            <!--end::Body-->
+          </div>
+        </div>
+            <div class="col-xl-3">
+              <div class="card card-xl-stretch mb-xl-10 theme-dark-bg-body" style="background-color: #d7e5eb">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center h-100">
+                    <div class="cont">
+                      <i class="fa-duotone fa-thumbs-up"></i>
+                    </div>
+                
+                    <a (click)="NavigateToConsultant()" class="text-dark text-hover-primary fw-bold fs-3">Consultants &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                  </div>
+                  
+                  <div class="pt-5">
+                    <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+                  </div>
+                  <!--end::Stats-->
+                </div>
+                <!--end::Body-->
+              </div>
+            </div>
+            <div class="col-xl-3">
+              <!--begin::Mixed Widget 14-->
+              <div class="card card-xxl-stretch mb-5 mb-xl-10 theme-dark-bg-body" style="background-color: #dfdbec">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center">
+                    <div class="cont">
+                      <i class="fa-duotone fa-user"></i>
+                    </div>
+                 
+                    <a (click)="NavigateToMentors()" class="text-dark text-hover-primary fw-bold fs-3">Mentors &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                  </div>
+                  
+                  <div class="pt-5">
+                    <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+                  </div>
+                  <!--end::Stats-->
+                </div>
+              </div>
+              <!--end::Mixed Widget 14-->
+            </div>
+            <div class="col-xl-3">
+              <!--begin::Mixed Widget 14-->
+              <div class="card card-xxl-stretch mb-5 mb-xl-10 theme-dark-bg-body" style="background-color: #fbf9d2">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center">
+                    <div class="cont">
+                      <i class="fa-duotone fa-microphone"></i>
+                    </div>
+                 
+                    <a (click)="NavigateToIncubator()" class="text-dark text-hover-primary fw-bold fs-3">Incubators &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                  </div>
+                  
+                  <div class="pt-5">
+                    <span class="text-dark fw-bold fs-3x me-2 lh-0">15</span>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+        </div>
+        
+  <div class="buttonsForDashboard mt-5 mb-5">
+    <div class="row">
+        <div class="col-4">
+            <button><i class="fa fa-plus" style="color: #65C8D0;"></i>
+          {{ l('Add New user') }}
+        </button>
+        </div>
+        <div class="col-4">
+            <button><i class="fa-duotone fa-users" style="color: #65C8D0;"></i>
+                {{ l('Total registered user') }}
+              </button>
+        </div>
+        <div class="col-4">
+            <button><i class="fa-duotone fa-list" style="color: #65C8D0;"></i>
+                {{ l('All assesments') }}
+              </button>
+        </div>
+    </div>
+  </div>
+
+  <!-- Chart  -->
+  <div class="col-xxl-8 mb-5">
+    <!--begin::Chart widget 38-->
+<div class="card card-flush h-md-100">
+<!--begin::Header-->
+<div class="card-header pt-7">
+    <!--begin::Title-->
+    <h3 class="card-title align-items-start flex-column">
+        <span class="card-label fw-bold text-gray-800">LOI Issued by Departments</span>
+        <span class="text-gray-400 mt-1 fw-semibold fs-6">Counted in Millions</span>
+    </h3>
+    <!--end::Title-->
+
+    <!--begin::Toolbar-->
+    <div class="card-toolbar">           
+        <!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
+        <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left" class="btn btn-sm btn-light d-flex align-items-center px-4" data-kt-initialized="1">           
+            <!--begin::Display range-->
+            <div class="text-gray-600 fw-bold">25 Mar 2023 - 23 Apr 2023</div>
+            <!--end::Display range-->
+
+            <i class="ki-outline ki-calendar-8 fs-1 ms-2 me-0"></i>          
+        </div>  
+        <!--end::Daterangepicker-->
+    </div>
+    <!--end::Toolbar-->
+</div>
+<!--end::Header-->
+
+<!--begin::Body-->
+<div class="card-body d-flex align-items-end px-0 pt-3 pb-5"> 
+    <!--begin::Chart-->
+    <div id="kt_charts_widget_38_chart" class="h-325px w-100 min-h-auto ps-4 pe-6" style="min-height: 340px;"><div id="apexchartsh4lwvytz" class="apexcharts-canvas apexchartsh4lwvytz apexcharts-theme-light" style="width: 790.5px; height: 325px;"><svg id="SvgjsSvg1120" width="790.5" height="325" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: none;"><g id="SvgjsG1122" class="apexcharts-inner apexcharts-graphical" transform="translate(60.59375, 30)"><defs id="SvgjsDefs1121"><linearGradient id="SvgjsLinearGradient1126" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1127" stop-opacity="0" stop-color="rgba(216,227,240,0)" offset="0"></stop><stop id="SvgjsStop1128" stop-opacity="0" stop-color="rgba(190,209,230,0)" offset="1"></stop><stop id="SvgjsStop1129" stop-opacity="0" stop-color="rgba(190,209,230,0)" offset="1"></stop></linearGradient><clipPath id="gridRectMaskh4lwvytz"><rect id="SvgjsRect1131" width="725.90625" height="256.54178125" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskh4lwvytz"></clipPath><clipPath id="nonForecastMaskh4lwvytz"></clipPath><clipPath id="gridRectMarkerMaskh4lwvytz"><rect id="SvgjsRect1132" width="723.90625" height="258.54178125" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><rect id="SvgjsRect1130" width="28.79625" height="254.54178124999999" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke-dasharray="3" fill="url(#SvgjsLinearGradient1126)" class="apexcharts-xcrosshairs" y2="254.54178124999999" filter="none" fill-opacity="0.9"></rect><g id="SvgjsG1179" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1180" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"><text id="SvgjsText1182" font-family="inherit" x="51.421875" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1183">E2E</tspan><title>E2E</title></text><text id="SvgjsText1185" font-family="inherit" x="154.265625" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1186">IMC</tspan><title>IMC</title></text><text id="SvgjsText1188" font-family="inherit" x="257.109375" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1189">SSMC</tspan><title>SSMC</title></text><text id="SvgjsText1191" font-family="inherit" x="359.953125" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1192">SSBD</tspan><title>SSBD</title></text><text id="SvgjsText1194" font-family="inherit" x="462.796875" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1195">ICCD</tspan><title>ICCD</title></text><text id="SvgjsText1197" font-family="inherit" x="565.640625" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1198">PAN</tspan><title>PAN</title></text><text id="SvgjsText1200" font-family="inherit" x="668.484375" y="283.54178125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1201">SBN</tspan><title>SBN</title></text></g></g><g id="SvgjsG1219" class="apexcharts-grid"><g id="SvgjsG1220" class="apexcharts-gridlines-horizontal"><line id="SvgjsLine1222" x1="0" y1="0" x2="719.90625" y2="0" stroke="#e1e3ea" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1223" x1="0" y1="63.635445312499996" x2="719.90625" y2="63.635445312499996" stroke="#e1e3ea" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1224" x1="0" y1="127.27089062499999" x2="719.90625" y2="127.27089062499999" stroke="#e1e3ea" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1225" x1="0" y1="190.9063359375" x2="719.90625" y2="190.9063359375" stroke="#e1e3ea" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1226" x1="0" y1="254.54178124999999" x2="719.90625" y2="254.54178124999999" stroke="#e1e3ea" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1221" class="apexcharts-gridlines-vertical"></g><line id="SvgjsLine1228" x1="0" y1="254.54178124999999" x2="719.90625" y2="254.54178124999999" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1227" x1="0" y1="1" x2="0" y2="254.54178124999999" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1133" class="apexcharts-bar-series apexcharts-plot-series"><g id="SvgjsG1134" class="apexcharts-series" rel="1" seriesName="LOIxIssued" data:realIndex="0"><path id="SvgjsPath1138" d="M 37.02375 254.54178124999999L 37.02375 144.9979796875Q 37.02375 139.9979796875 42.02375 139.9979796875L 58.81999999999999 139.9979796875Q 63.81999999999999 139.9979796875 63.81999999999999 144.9979796875L 63.81999999999999 144.9979796875L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 37.02375 254.54178124999999L 37.02375 144.9979796875Q 37.02375 139.9979796875 42.02375 139.9979796875L 58.81999999999999 139.9979796875Q 63.81999999999999 139.9979796875 63.81999999999999 144.9979796875L 63.81999999999999 144.9979796875L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999z" pathFrom="M 37.02375 254.54178124999999L 37.02375 254.54178124999999L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999L 63.81999999999999 254.54178124999999L 37.02375 254.54178124999999" cy="139.9979796875" cx="138.8675" j="0" val="54" barHeight="114.5438015625" barWidth="28.79625"></path><path id="SvgjsPath1144" d="M 139.8675 254.54178124999999L 139.8675 170.4521578125Q 139.8675 165.4521578125 144.8675 165.4521578125L 161.66375 165.4521578125Q 166.66375 165.4521578125 166.66375 170.4521578125L 166.66375 170.4521578125L 166.66375 254.54178124999999L 166.66375 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 139.8675 254.54178124999999L 139.8675 170.4521578125Q 139.8675 165.4521578125 144.8675 165.4521578125L 161.66375 165.4521578125Q 166.66375 165.4521578125 166.66375 170.4521578125L 166.66375 170.4521578125L 166.66375 254.54178124999999L 166.66375 254.54178124999999z" pathFrom="M 139.8675 254.54178124999999L 139.8675 254.54178124999999L 166.66375 254.54178124999999L 166.66375 254.54178124999999L 166.66375 254.54178124999999L 166.66375 254.54178124999999L 166.66375 254.54178124999999L 139.8675 254.54178124999999" cy="165.4521578125" cx="241.71125" j="1" val="42" barHeight="89.0896234375" barWidth="28.79625"></path><path id="SvgjsPath1150" d="M 242.71125 254.54178124999999L 242.71125 100.45316796875Q 242.71125 95.45316796875 247.71125 95.45316796875L 264.5075 95.45316796875Q 269.5075 95.45316796875 269.5075 100.45316796875L 269.5075 100.45316796875L 269.5075 254.54178124999999L 269.5075 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 242.71125 254.54178124999999L 242.71125 100.45316796875Q 242.71125 95.45316796875 247.71125 95.45316796875L 264.5075 95.45316796875Q 269.5075 95.45316796875 269.5075 100.45316796875L 269.5075 100.45316796875L 269.5075 254.54178124999999L 269.5075 254.54178124999999z" pathFrom="M 242.71125 254.54178124999999L 242.71125 254.54178124999999L 269.5075 254.54178124999999L 269.5075 254.54178124999999L 269.5075 254.54178124999999L 269.5075 254.54178124999999L 269.5075 254.54178124999999L 242.71125 254.54178124999999" cy="95.45316796875" cx="344.555" j="2" val="75" barHeight="159.08861328125" barWidth="28.79625"></path><path id="SvgjsPath1156" d="M 345.555 254.54178124999999L 345.555 26.211815104166675Q 345.555 21.211815104166675 350.555 21.211815104166675L 367.35125 21.211815104166675Q 372.35125 21.211815104166675 372.35125 26.211815104166675L 372.35125 26.211815104166675L 372.35125 254.54178124999999L 372.35125 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 345.555 254.54178124999999L 345.555 26.211815104166675Q 345.555 21.211815104166675 350.555 21.211815104166675L 367.35125 21.211815104166675Q 372.35125 21.211815104166675 372.35125 26.211815104166675L 372.35125 26.211815104166675L 372.35125 254.54178124999999L 372.35125 254.54178124999999z" pathFrom="M 345.555 254.54178124999999L 345.555 254.54178124999999L 372.35125 254.54178124999999L 372.35125 254.54178124999999L 372.35125 254.54178124999999L 372.35125 254.54178124999999L 372.35125 254.54178124999999L 345.555 254.54178124999999" cy="21.211815104166675" cx="447.39875" j="3" val="110" barHeight="233.3299661458333" barWidth="28.79625"></path><path id="SvgjsPath1162" d="M 448.39875 254.54178124999999L 448.39875 210.75460651041666Q 448.39875 205.75460651041666 453.39875 205.75460651041666L 470.195 205.75460651041666Q 475.195 205.75460651041666 475.195 210.75460651041666L 475.195 210.75460651041666L 475.195 254.54178124999999L 475.195 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 448.39875 254.54178124999999L 448.39875 210.75460651041666Q 448.39875 205.75460651041666 453.39875 205.75460651041666L 470.195 205.75460651041666Q 475.195 205.75460651041666 475.195 210.75460651041666L 475.195 210.75460651041666L 475.195 254.54178124999999L 475.195 254.54178124999999z" pathFrom="M 448.39875 254.54178124999999L 448.39875 254.54178124999999L 475.195 254.54178124999999L 475.195 254.54178124999999L 475.195 254.54178124999999L 475.195 254.54178124999999L 475.195 254.54178124999999L 448.39875 254.54178124999999" cy="205.75460651041666" cx="550.2425000000001" j="4" val="23" barHeight="48.78717473958333" barWidth="28.79625"></path><path id="SvgjsPath1168" d="M 551.2425000000001 254.54178124999999L 551.2425000000001 74.99898984375Q 551.2425000000001 69.99898984375 556.2425000000001 69.99898984375L 573.03875 69.99898984375Q 578.03875 69.99898984375 578.03875 74.99898984375L 578.03875 74.99898984375L 578.03875 254.54178124999999L 578.03875 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 551.2425000000001 254.54178124999999L 551.2425000000001 74.99898984375Q 551.2425000000001 69.99898984375 556.2425000000001 69.99898984375L 573.03875 69.99898984375Q 578.03875 69.99898984375 578.03875 74.99898984375L 578.03875 74.99898984375L 578.03875 254.54178124999999L 578.03875 254.54178124999999z" pathFrom="M 551.2425000000001 254.54178124999999L 551.2425000000001 254.54178124999999L 578.03875 254.54178124999999L 578.03875 254.54178124999999L 578.03875 254.54178124999999L 578.03875 254.54178124999999L 578.03875 254.54178124999999L 551.2425000000001 254.54178124999999" cy="69.99898984375" cx="653.0862500000001" j="5" val="87" barHeight="184.54279140625" barWidth="28.79625"></path><path id="SvgjsPath1174" d="M 654.0862500000001 254.54178124999999L 654.0862500000001 153.48270572916667Q 654.0862500000001 148.48270572916667 659.0862500000001 148.48270572916667L 675.8825 148.48270572916667Q 680.8825 148.48270572916667 680.8825 153.48270572916667L 680.8825 153.48270572916667L 680.8825 254.54178124999999L 680.8825 254.54178124999999z" fill="rgba(0,158,247,1)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="2" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskh4lwvytz)" pathTo="M 654.0862500000001 254.54178124999999L 654.0862500000001 153.48270572916667Q 654.0862500000001 148.48270572916667 659.0862500000001 148.48270572916667L 675.8825 148.48270572916667Q 680.8825 148.48270572916667 680.8825 153.48270572916667L 680.8825 153.48270572916667L 680.8825 254.54178124999999L 680.8825 254.54178124999999z" pathFrom="M 654.0862500000001 254.54178124999999L 654.0862500000001 254.54178124999999L 680.8825 254.54178124999999L 680.8825 254.54178124999999L 680.8825 254.54178124999999L 680.8825 254.54178124999999L 680.8825 254.54178124999999L 654.0862500000001 254.54178124999999" cy="148.48270572916667" cx="755.9300000000001" j="6" val="50" barHeight="106.05907552083332" barWidth="28.79625"></path><g id="SvgjsG1136" class="apexcharts-bar-goals-markers" style="pointer-events: none"><g id="SvgjsG1137" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1143" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1149" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1155" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1161" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1167" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1173" className="apexcharts-bar-goals-groups"></g></g></g><g id="SvgjsG1135" class="apexcharts-datalabels" data:realIndex="0"><g id="SvgjsG1140" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1142" font-family="inherit" x="50.42187500000001" y="127.73235468749999" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="50.42187500000001" cy="127.73235468749999" style="font-family: inherit;">54</text></g><g id="SvgjsG1146" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1148" font-family="inherit" x="153.265625" y="153.1865328125" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="153.265625" cy="153.1865328125" style="font-family: inherit;">42</text></g><g id="SvgjsG1152" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1154" font-family="inherit" x="256.109375" y="83.18754296875" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="256.109375" cy="83.18754296875" style="font-family: inherit;">75</text></g><g id="SvgjsG1158" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1160" font-family="inherit" x="358.953125" y="8.946190104166675" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="358.953125" cy="8.946190104166675" style="font-family: inherit;">110</text></g><g id="SvgjsG1164" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1166" font-family="inherit" x="461.79687500000006" y="193.48898151041666" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="461.79687500000006" cy="193.48898151041666" style="font-family: inherit;">23</text></g><g id="SvgjsG1170" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1172" font-family="inherit" x="564.6406250000001" y="57.733364843749996" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="564.6406250000001" cy="57.733364843749996" style="font-family: inherit;">87</text></g><g id="SvgjsG1176" class="apexcharts-data-labels" transform="rotate(0)"><text id="SvgjsText1178" font-family="inherit" x="667.4843750000001" y="136.21708072916667" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="600" fill="#181c32" class="apexcharts-datalabel" cx="667.4843750000001" cy="136.21708072916667" style="font-family: inherit;">50</text></g></g></g><line id="SvgjsLine1229" x1="0" y1="0" x2="719.90625" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1230" x1="0" y1="0" x2="719.90625" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1231" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1232" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1233" class="apexcharts-point-annotations"></g></g><g id="SvgjsG1202" class="apexcharts-yaxis" rel="0" transform="translate(30.59375, 0)"><g id="SvgjsG1203" class="apexcharts-yaxis-texts-g"><text id="SvgjsText1205" font-family="inherit" x="20" y="31.4" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1206">120M</tspan><title>120M</title></text><text id="SvgjsText1208" font-family="inherit" x="20" y="95.0354453125" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1209">90M</tspan><title>90M</title></text><text id="SvgjsText1211" font-family="inherit" x="20" y="158.670890625" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1212">60M</tspan><title>60M</title></text><text id="SvgjsText1214" font-family="inherit" x="20" y="222.3063359375" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1215">30M</tspan><title>30M</title></text><text id="SvgjsText1217" font-family="inherit" x="20" y="285.94178124999996" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a1a5b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1218">0M</tspan><title>0M</title></text></g></g><g id="SvgjsG1123" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend" style="max-height: 162.5px;"></div><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(0, 158, 247);"></span><div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+    <!--end::Chart-->                  
+</div>
+<!--end: Card Body-->
+</div>
+<!--end::Chart widget 38-->
+
+ </div>
+  
+        <!-- Entrepreneurs Section  -->
+  
+        <div class="card mb-5 mb-xl-10">
+          <div class="card-header border-0 pt-5">
+            <h3 class="card-title align-items-start flex-column">
+                <div class="dashboard d-flex gap-3">
+                    <div class="log">
+                    </div>
+                    <span class="card-label fw-bold fs-3 mb-1">Entrepreneurs</span>
+                  </div>
+              
+              
+   
+            </h3>
+            <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+              data-bs-original-title="Click to add a user" data-kt-initialized="1">
+              <a href="#" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal"
+                data-bs-target="#kt_modal_invite_friends">
+                <i class="ki-duotone ki-plus fs-2"></i> Non registered bussiness
+              </a>
+            </div>
+          </div>
+          <div class="card-body py-3">
+           
+            <div class="table-responsive">
+              <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                <thead>
+                  <tr class="fw-bold text-muted">
+                    <th class="min-w-20px">Id</th>
+                    <th class="min-w-100px">Company</th>
+                    <th class="min-w-150px">Location</th>
+                    <th class="min-w-100px">Phase</th>
+                    <th class="min-w-100px">Industry</th>
+                    <th class="min-w-50px">Employees</th>
+                    <th class="min-w-50px">Turnover</th> 
+                     <th class="min-w-50px">Bizrating</th>
+                    <th class="min-w-100px text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class=" align-items-center">
+                        <h2>1</h2>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Thabo Mokwele
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Johannesburg, South Africa
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Idea/Concept
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Other
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        5 
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        R 0.00
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        9.47
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-end flex-shrink-0">
+                        <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                          <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                        </a>
+                        <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                          <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class=" align-items-center">
+                        <h2>2</h2>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Thabo Mokwele
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Johannesburg, South Africa
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Idea/Concept
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Other
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        5 
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        R 0.00
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        9.47
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-end flex-shrink-0">
+                        <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                          <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                        </a>
+                        <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                          <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class=" align-items-center">
+                        <h2>3</h2>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Thabo Mokwele
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Johannesburg, South Africa
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Idea/Concept
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Other
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        5 
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        R 0.00
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        9.47
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-end flex-shrink-0">
+                        <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                          <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                        </a>
+                        <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                          <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class=" align-items-center">
+                        <h2>4</h2>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Thabo Mokwele
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Johannesburg, South Africa
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Idea/Concept
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Other
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        5 
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        R 0.00
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        9.47
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-end flex-shrink-0">
+                        <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                          <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                        </a>
+                        <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                          <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class=" align-items-center">
+                        <h2>5</h2>
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Thabo Mokwele
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Johannesburg, South Africa
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Idea/Concept
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        Other
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        5 
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        R 0.00
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" align-items-center">
+                        9.47
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-end flex-shrink-0">
+                        <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                          <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                        </a>
+                        <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                          <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <!--end::Table body-->
+              </table>
+              <!--end::Table-->
+            </div>
+            <!--end::Table container-->
+          </div>
+          <!--begin::Body-->
+        </div>
+  
+  
+  
+  
+  
+  
+        <div class="row gy-5 g-xl-10">
+          <div class="col-xl-4">      
+            <div class="card card-flush h-xl-100">
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                  <span class="card-label fw-bold text-dark">Enterpreneurs</span>
+                </h3>
+                    <div class="card-toolbar">   
+                        <a href="#" class="btn btn-sm btn-light">See All</a>             
+                    </div>
+                </div>
+                <div class="card-body pt-5">    
+                        <div class="d-flex flex-stack">                                 
+                            <div class="d-flex align-items-center me-3">                      
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAsK6oIKzeSCKiqpjv5cuoC4ZC_hJ0FxNkvQ&usqp=CAU" class="me-4 w-30px" alt="">                                                  
+                                <div class="flex-grow-1">
+                                    <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Jazmyn@jaz.designer</a>
+                                 
+                                    <span class="text-gray-400 fw-semibold d-block fs-6">8hour ago</span>
+                                 
+                                </div>               
+                            </div> 
+                        </div>
+                            <div class="separator separator-dashed my-3"></div>
+                            <div class="d-flex flex-stack">                                 
+                              <div class="d-flex align-items-center me-3">                      
+                                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAsK6oIKzeSCKiqpjv5cuoC4ZC_hJ0FxNkvQ&usqp=CAU" class="me-4 w-30px" alt="">                                                  
+                                  <div class="flex-grow-1">
+                                      <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Jazmyn@jaz.designer</a>
+                                   
+                                      <span class="text-gray-400 fw-semibold d-block fs-6">8hour ago</span>
+                                   
+                                  </div>               
+                              </div> 
+                          </div>
+                            <div class="separator separator-dashed my-3"></div>
+                            <div class="d-flex flex-stack">                                 
+                              <div class="d-flex align-items-center me-3">                      
+                                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAsK6oIKzeSCKiqpjv5cuoC4ZC_hJ0FxNkvQ&usqp=CAU" class="me-4 w-30px" alt="">                                                  
+                                  <div class="flex-grow-1">
+                                      <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Jazmyn@jaz.designer</a>
+                                   
+                                      <span class="text-gray-400 fw-semibold d-block fs-6">8hour ago</span>
+                                   
+                                  </div>               
+                              </div> 
+                          </div>
+                           
+                            
+                          <button class="my-button">Send Mail</button>
+                </div>
+            
+              </div>
+                </div>
+  
+          <!-- four Div  -->
+          <div class="col-4">
+            <div class="card shadow-sm">
+              <div class="card-header border-0">
+                  <h3 class="card-title">Actions</h3>
+              </div>
+              <div class="card-body">
+                <div class="icon-container">
+                  <div class="icon-wrapper">
+                    <i class="fa-duotone fa-clock"></i>
+                    <span>Early Stage</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <i class="fa-duotone fa-piggy-bank"></i>
+                    <span>Start Up</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <i class="fa-duotone fa-lightbulb-on"></i>
+                    <span>Idea Concept</span>
+                  </div>
+                  <div class="icon-wrapper">
+                    <i class="fa-duotone fa-gauge-simple-high"></i>
+                    <span>Acceleration</span>
+                  </div>
+                </div>
+                
+              </div>
+              
+          </div>
+          </div>
+          <div class="col-4">
+            <div class="card shadow-sm">
+              <div class="card-header border-0">
+                  <h3 class="card-title">Actions</h3>
+              </div>
+              <div class="card-body">
+                <div class="card card-flush h-md-50 mb-5 mb-xl-10">
+                  <!--begin::Header-->
+                  <div class="card-header pt-5">
+                      <!--begin::Title-->
+                      <div class="card-title d-flex flex-column">   
+                          <!--begin::Info--> 
+                          <div class="d-flex align-items-center">
+                              <!--begin::Currency-->
+                              <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">$</span>
+                              <!--end::Currency-->
+              
+                              <!--begin::Amount-->
+                              <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">69,700</span>
+                              <!--end::Amount-->
+              
+                              <!--begin::Badge-->
+                              <span class="badge badge-light-success fs-base">                                
+                                  <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1"><span class="path1"></span><span class="path2"></span></i> 
+                                  2.2%
+                              </span>            
+                              <!--end::Badge--> 
+                          </div>
+                          <!--end::Info--> 
+              
+                          <!--begin::Subtitle-->
+                          <span class="text-gray-400 pt-1 fw-semibold fs-6">Expected Earnings</span>
+                          <!--end::Subtitle--> 
+                      </div>
+                      <!--end::Title-->      
+                  </div>
+                  <!--end::Header-->
+              
+                  <!--begin::Card body-->
+                  <div class="card-body pt-2 pb-4 d-flex align-items-center">
+                      <!--begin::Chart-->
+                      <div class="d-flex flex-center me-5 pt-2">
+                          <div id="kt_card_widget_4_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11">
+                          <span></span><canvas height="70" width="70"></canvas></div>
+                      </div>
+                      <!--end::Chart-->
+                      
+                      <!--begin::Labels-->
+                      <div class="d-flex flex-column content-justify-center w-100">
+                          <!--begin::Label-->
+                          <div class="d-flex fs-6 fw-semibold align-items-center">
+                              <!--begin::Bullet-->
+                              <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
+                              <!--end::Bullet-->
+              
+                              <!--begin::Label-->
+                              <div class="text-gray-500 flex-grow-1 me-4">Shoes</div>
+                              <!--end::Label-->
+              
+                              <!--begin::Stats-->
+                              <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
+                              <!--end::Stats-->
+                          </div>
+                          <!--end::Label-->
+              
+                          <!--begin::Label-->
+                          <div class="d-flex fs-6 fw-semibold align-items-center my-3">
+                              <!--begin::Bullet-->
+                              <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
+                              <!--end::Bullet-->
+              
+                              <!--begin::Label-->
+                              <div class="text-gray-500 flex-grow-1 me-4">Gaming</div>
+                              <!--end::Label-->
+              
+                              <!--begin::Stats-->
+                              <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
+                              <!--end::Stats-->                    
+                          </div>
+                          <!--end::Label-->
+              
+                          <!--begin::Label-->
+                          <div class="d-flex fs-6 fw-semibold align-items-center">
+                              <!--begin::Bullet-->
+                              <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF"></div>
+                              <!--end::Bullet-->
+              
+                              <!--begin::Label-->
+                              <div class="text-gray-500 flex-grow-1 me-4">Others</div>
+                              <!--end::Label-->
+              
+                              <!--begin::Stats-->
+                              <div class=" fw-bolder text-gray-700 text-xxl-end">$45,257</div>
+                              <!--end::Stats-->                      
+                          </div>
+                          <!--end::Label-->
+                      </div>
+                      <!--end::Labels-->
+                  </div>
+                  <!--end::Card body-->
+              </div>
+                
+              </div>
+              
+          </div>
+          </div>
+          <!--end::Col-->
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>

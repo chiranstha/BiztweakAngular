@@ -1,0 +1,200 @@
+﻿<div [@routerTransition]>
+  <div class="content d-flex flex-column flex-column-fluid">
+    <div id="kt_app_toolbar" class="app-toolbar py-2">
+      <!--begin::Toolbar container-->
+      <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+        <!--begin::Page title-->
+        <div
+          data-kt-swapper="true"
+          data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}"
+          data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_toolbar_container'}"
+          class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0"
+        >
+          <!--begin::Title-->
+          <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+            Course Category
+          </h1>
+          <!--end::Title-->
+
+          <!--begin::Breadcrumb-->
+          <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+              <a href="/metronic8/demo1/../demo1/index.html" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+              <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Toolbars</li>
+            <!--end::Item-->
+          </ul>
+          <!--end::Breadcrumb-->
+        </div>
+        <!--end::Page title-->
+        <!--begin::Action group-->
+        <div class="d-flex align-items-center">
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <div class="position-relative w-md-400px me-md-2">
+              <i
+                class="fa-duotone fa-magnifying-glass fs-3 text-gray-500 position-absolute top-50 translate-middle ms-6"
+              >
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+              <input
+                type="text"
+                (keyup)="getCourseCategories($event.target.value)"
+                (keyup.enter)="getCourseCategories($event.target.value)"
+                [(ngModel)]="filterText"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control form-control-solid ps-10"
+                name="search"
+                value=""
+                placeholder="Search"
+              />
+            </div>
+            <!--end::Select-->
+          </div>
+          <!--end::Action wrapper-->
+
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <!--begin::Separartor-->
+            <div class="bullet bg-secondary h-35px w-1px mx-5"></div>
+            <!--end::Separartor-->
+          </div>
+          <!--end::Action wrapper-->
+
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <!--begin::Actions-->
+            <div class="d-flex">
+              <span
+                class="btn btn-icon btn-bg-secondary btn-active-color-primary w-100px h-30px"
+                (click)="createCourseCategory()"
+              >
+                <i class="fa-duotone fa-circle-plus fs-2">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </i>
+                Create
+              </span>
+
+              <!--begin::Action-->
+              <!-- <a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-success"
+                                data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top"
+                                aria-label="Add new page" data-bs-original-title="Add new page" data-kt-initialized="1">
+                                <i class="fa-duotone fa-file fs-2qx">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a> -->
+              <!--end::Action-->
+
+              <!--begin::Action-->
+              <!-- <a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-success"
+                                data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top"
+                                aria-label="Add new category" data-bs-original-title="Add new category"
+                                data-kt-initialized="1">
+                                <i class="fa-duotone  fa-file-circle-plus fs-2qx">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </a> -->
+              <!--end::Action-->
+
+              <!--begin::Action-->
+              <!-- <a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-success"
+                                data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top"
+                                aria-label="Add new section" data-bs-original-title="Add new section"
+                                data-kt-initialized="1">
+                                <i class="fa-duotone fa-magnifying-glass fs-2qx">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </a> -->
+              <!--end::Action-->
+            </div>
+            <!--end::Actions-->
+          </div>
+          <!--end::Action wrapper-->
+        </div>
+        <!--end::Action group-->
+      </div>
+      <!--end::Toolbar container-->
+    </div>
+
+    <div [class]="containerClass">
+      <div class="card card-custom gutter-b mt-5">
+        <div class="card-body">
+          <div id="kt_table_widget_4_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="table-responsive">
+              <table
+                class="table align-middle table-row-dashed fs-6 gy-2 dataTable no-footer"
+                id="kt_table_widget_4_table"
+              >
+                <thead>
+                  <tr class="text-start text-gray-700 fw-bold fs-3 text-uppercase gs-0">
+                    <th class="min-w-100px sorting_disabled" style="width: 100px">NAME</th>
+                    <th class="text-start min-w-100px sorting_disabled" style="width: 100px">DESCRIPTION</th>
+
+                    <th class="sorting_disabled" style="width: 25px; margin-left: 20px">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody class="fw-bold text-gray-700">
+                  <tr class="odd" *ngFor="let items of course">
+                    <td>
+                      {{ items.name }}
+                    </td>
+                    <td class="text-start">
+                      {{ items.description }}
+                    </td>
+                    <td>
+                      <span
+                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                        (click)="createOrEditCourseCategoryModal.showEdit(items.id)"
+                      >
+                        <i class="fa-duotone fa-file-edit fs-2">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                        </i>
+                      </span>
+
+                      <span
+                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                        (click)="deletecourse(items.id)"
+                      >
+                        <i class="fa-duotone fa-trash-alt fs-2">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                        </i>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+                <!--end::Table body-->
+              </table>
+            </div>
+            <div class="card-footer">
+              <biztweak-paginator (paginatorEvent)="getCourseCategories($event)" [totalCount]="totalCount"></biztweak-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <createOrEditCourseCategoryModal
+      #createOrEditCourseCategoryModal
+      (modalSave)="getCourseCategories()"
+    ></createOrEditCourseCategoryModal>
+    <viewCourseCategoryModal #viewCourseCategoryModal></viewCourseCategoryModal>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-white">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" style="width: 150px" href="index.html"><img src="../assets/images/logo.png" class="img-fluid" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav ms-auto" style="margin-left: auto!important;">
+                <li class="nav-item">
+                    <a class="nav-link px-sm-3" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-sm-3" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-sm-3" href="#">About Us</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-info btn-login px-5 py-2" routerLink="/login">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+                    <button class="btnR regis" (click)="NavigateToReg()" >Register</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="auth">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="../../../assets/images/auth.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card p-3 p-md-5" style="width: 115%;">
+                            <div class="card-body">
+                                <h2>Create Account</h2>
+                                <p class="mb-md-5">Follow the instructions to make it easier to register and you will be able to explore inside.
+                                </p>
+                                <form action="https://biztweak.org.za/public/login" method="POST">
+                                    <input type="hidden" name="_token" value="ZiOcGc1MfWXhG1HqNC3l8TznX1jVU9YLyLBtn9xu">
+                                    <div class="input-group input-group-lg p-2 mb-3">
+                                        <i class="fa fa-user input-group-text"></i>
+                                        <input id="text" type="text" placeholder="Full Name" class="form-control " name="user" value="" required autocomplete="user" autofocus>
+                                    </div>
+                                    <div class="input-group input-group-lg p-2 mb-3">
+                                        <i class="fa fa-envelope input-group-text"></i>
+                                        <input id="email" type="email" placeholder="E-mail address" class="form-control " name="email" value="" required autocomplete="email" autofocus>
+                                    </div>
+                                   
+                                    <div class="input-group input-group-lg p-2 mb-3">
+                                        <i class="fa fa-lock input-group-text"></i>
+                                        <input id="password" type="password" placeholder="Password" class="form-control " name="password" required autocomplete="current-password">
+                                    </div>
+                                    <div class="input-group input-group-lg p-2 mb-3">
+                                        <i class="fa fa-lock input-group-text"></i>
+                                        <input id="password" type="password" placeholder="Confirm Password" class="form-control " name="password" required autocomplete="current-password">
+                                    </div>
+                                    <div class="d-md-flex justify-content-between mb-3 align-items-center">
+                                        <button class="btn btn-lg btn-info text-white" type="submit" routerLink="/">Create Account</button>
+                                        <div class="float-none float-md-end">Already have an Account? <a class="LoginKo" (click)="navigateToLogin()">Sign in</a></div>
+                                    </div>
+                                    <div class="clearfix mb-3"></div>
+                                    <h6 class="mt-5 mb-3 fw-bold">Or Connect with</h6>
+                                    <div class="d-flex">
+                                        <a class="btn btn-outline-light text-dark px-3 px-md-5 border me-3" style="margin-right: 1rem!important;"><img style="height: 24px;width: 24px;" src="../../../assets/images/icons/google.png" alt=""> Google</a>
+                                        <a class="btn btn-outline-light text-dark px-3 px-md-5 me-3 border" style="margin-right: 1rem!important;"><img style="height: 24px;width: 24px;" src="../../../assets/images/icons/facebook.png" alt=""> Facebook</a>
+                                        <a class="btn btn-outline-light text-dark px-3 px-md-5 me-3 border" style="margin-right: 1rem!important;"><img style="height: 24px;width: 24px;" src="../../assets/images/icons/linkedin-social-media.jpeg" alt=""> Linkedin</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

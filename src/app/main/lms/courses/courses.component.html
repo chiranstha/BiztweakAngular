@@ -1,0 +1,168 @@
+﻿<div [@routerTransition]>
+  <div class="content d-flex flex-column flex-column-fluid">
+    <!-- <sub-header [title]="'Courses' | localize" [description]="'CoursesHeaderInfo' | localize">
+      <div role="actions">
+        <button (click)="exportToExcel()" class="btn btn-outline btn-outline-success btn-active-light-success me-1">
+          <i class="fa fa-file-excel"></i>
+          {{ l('ExportToExcel') }}
+        </button>
+
+        <button *ngIf="isGranted('Pages.Courses.Create')" (click)="createCourse()" class="btn btn-primary blue">
+          <i class="fa fa-plus"></i>
+          {{ l('CreateNewCourse') }}
+        </button>
+      </div>
+    </sub-header> -->
+
+    <div id="kt_app_toolbar" class="app-toolbar py-2">
+      <!--begin::Toolbar container-->
+      <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+        <!--begin::Page title-->
+        <div data-kt-swapper="true" data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}"
+          data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_toolbar_container'}"
+          class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0">
+          <!--begin::Title-->
+          <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+            Course </h1>
+          <!--end::Title-->
+
+          <!--begin::Breadcrumb-->
+          <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+              <span class="text-muted text-hover-primary">Home</span>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+              <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Toolbars</li>
+            <!--end::Item-->
+          </ul>
+          <!--end::Breadcrumb-->
+        </div>
+        <!--end::Page title-->
+        <!--begin::Action group-->
+        <div class="d-flex align-items-center gap-2">
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <div class="position-relative w-md-400px me-md-2">
+              <i
+                class="fa-duotone fa-magnifying-glass fs-3 text-gray-500 position-absolute top-50 translate-middle ms-6">
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+              <input type="text" (keyup)="getCourses($event.target.value)"
+                (keyup.enter)="getCourses($event.target.value)" [(ngModel)]="filterText"
+                [ngModelOptions]="{ standalone: true }" class="form-control form-control-solid ps-10" name="search"
+                value="" placeholder="Search" />
+            </div>
+            <!--end::Select-->
+          </div>
+          <!--end::Action wrapper-->
+
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <!--begin::Separartor-->
+            <div class="bullet bg-secondary h-35px w-1px mx-5"></div>
+            <!--end::Separartor-->
+          </div>
+          <!--end::Action wrapper-->
+
+          <!--begin::Action wrapper-->
+          <div class="d-flex align-items-center">
+            <!--begin::Label-->
+            <span class="fs-7 text-gray-700 fw-bold pe-3 d-none d-md-block">Quick Tools:</span>
+            <!--end::Label-->
+
+            <!--begin::Actions-->
+            <div class="d-flex">
+              <button  (click)="createCourse()" class="btn btn-primary blue">
+                <i class="fa-duotone fa-bookmark-circle fs-2x"></i>
+                {{ l('CreateNewCourse') }}
+              </button>
+              <!--end::Action-->
+            </div>
+            <!--end::Actions-->
+          </div>
+          <!--end::Action wrapper-->
+        </div>
+        <!--end::Action group-->
+      </div>
+    </div>
+    <div [class]="containerClass">
+      <div class="card card-custom gutter-b">
+       
+      <div class="card-body card-scroll h-500px">
+        <div class="table table-row-dashed table-row-gray-300 table-striped">
+          <table class="table">
+            <thead>
+              <tr class="border-bottom border-gray-200">
+                <th>Name</th>
+                <th>catagory</th>
+                <th>Description</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let items of courseData">
+                <td>{{items.name}}</td>
+                <td>{{items.courseCategoryName}}</td>
+                <td>{{items.description}}</td>
+                <td>
+                  <span
+                  class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                >
+                
+                <i [routerLink]='["add", items.id]' class="fa-duotone fa-chevrons-right fa-fade cursor-pointer mt-1"
+                routerLinkActive="router-link-active"></i>
+                </span>
+                <!-- <span
+                class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+              >
+              
+              </span> -->
+                  <span
+                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                  >
+                    <i class="fa-duotone fa-file-edit fs-2" (click)="createOrEditCourseModal.showEdit(items.id)">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                    </i>
+                  </span>
+
+                  <span
+                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+      
+                  >
+                    <i class="fa-duotone fa-trash-alt fs-2" (click)="deleteCourse(items.id)">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                    </i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+      <div class="card-footer">
+        <biztweak-paginator (paginatorEvent)="getCourses($event)" [totalCount]="totalCount"></biztweak-paginator>
+      </div>
+       
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<createOrEditCourseModal #createOrEditCourseModal (modalSave)="getCourses()"></createOrEditCourseModal>
+<viewCourseModal #viewCourseModal></viewCourseModal>
+
+<router-outlet></router-outlet>

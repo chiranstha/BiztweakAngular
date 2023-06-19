@@ -1,0 +1,54 @@
+img{
+    width: 57% !important;
+    height: 62% !important;
+    margin-left: 48px !important;
+}
+.imagesCompany img{
+    margin-top: 60px;
+    width: 57% !important;
+    height: 100% !important;
+    margin-left: 48px !important; 
+}
+h2{
+    /* text-align: center; */
+    margin-left: 130px;
+}
+.widget-content ul li {
+    display: flex;
+    justify-content: space-between; }
+ .widget-content ul li i {
+      margin-right: 10px; }
+
+ .widget-content ul li span {
+   
+      display: inline-block; }
+      .widget-content .content{
+width: 150px;
+      }
+.widget-content .btn{
+        margin-top: 5px;
+        background: #E0F4F4;
+border-radius: 17.5px;
+      }
+  .card{
+    min-height: 800px;
+  }
+  .addCompany{
+    margin-top: 50px;
+    margin-left: 35%;
+    }
+  .Desc{
+    margin-left: 30%;
+  }
+  .btn{
+    margin-top: 5px;
+    background: #f6f8f8;
+    width: 150px;
+   color: rgba(0, 194, 203, 1);
+  }
+  .btn :hover{
+    background-color: #0f6f76;
+
+  }
+  
+  

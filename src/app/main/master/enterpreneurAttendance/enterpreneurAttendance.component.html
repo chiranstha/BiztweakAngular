@@ -1,0 +1,64 @@
+﻿<div [@routerTransition]>
+  <div class="content d-flex flex-column flex-column-fluid">
+    <sub-header
+      [title]="'EnterpreneurAttendance' | localize"
+      [description]="'EnterpreneurAttendanceHeaderInfo' | localize"
+    >
+      <div role="actions">
+        <button (click)="exportToExcel()" class="btn btn-outline btn-outline-success btn-active-light-success me-1">
+          <i class="fa fa-file-excel"></i>
+          {{ l('ExportToExcel') }}
+        </button>
+
+        <button
+          *ngIf="isGranted('Pages.EnterpreneurAttendance.Create')"
+          (click)="createEnterpreneurAttendance()"
+          class="btn btn-primary blue"
+        >
+          <i class="fa fa-plus"></i>
+          {{ l('CreateNewEnterpreneurAttendance') }}
+        </button>
+      </div>
+    </sub-header>
+
+    <div [class]="containerClass">
+      <div class="table-responsive">
+        <table class="table gs-7 gy-7 gx-7">
+          <thead>
+            <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
+              <th>Name</th>
+              <th>Position</th>
+              <th>Office</th>
+              <th>Age</th>
+              <th>Start date</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tiger Nixon</td>
+              <td>System Architect</td>
+              <td>Edinburgh</td>
+              <td>61</td>
+              <td>2011/04/25</td>
+              <td>$320,800</td>
+            </tr>
+            <tr>
+              <td>Garrett Winters</td>
+              <td>Accountant</td>
+              <td>Tokyo</td>
+              <td>63</td>
+              <td>2011/07/25</td>
+              <td>$170,750</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <createOrEditEnterpreneurAttendanceModal
+      #createOrEditEnterpreneurAttendanceModal
+      (modalSave)="getEnterpreneurAttendance()"
+    ></createOrEditEnterpreneurAttendanceModal>
+    <viewEnterpreneurAttendanceModal #viewEnterpreneurAttendanceModal></viewEnterpreneurAttendanceModal>
+  </div>
+</div>

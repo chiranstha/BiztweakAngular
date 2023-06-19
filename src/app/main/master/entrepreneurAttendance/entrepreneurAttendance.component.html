@@ -1,0 +1,122 @@
+﻿<div [@routerTransition]>
+  <div class="content d-flex flex-column flex-column-fluid">
+    <sub-header
+      [title]="'EntrepreneurAttendance' | localize"
+      [description]="'EntrepreneurAttendanceHeaderInfo' | localize"
+    >
+    <div role="actions" class="row align-items-center">
+      <div class="col">
+        <div class="input-group">
+          <div class="d-flex align-items-center">
+            <div class="position-relative w-md-400px me-md-2">
+              <i
+                class="fa-duotone fa-magnifying-glass fs-3 text-gray-500 position-absolute top-50 translate-middle ms-6"
+              >
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+              <input
+                type="text"
+                (keyup)="getEntrepreneurAttendance($event.target.value)"
+                (keyup.enter)="getEntrepreneurAttendance($event.target.value)"
+                [(ngModel)]="filterText"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control form-control-solid ps-10"
+                name="search"
+                value=""
+                placeholder="Search"
+              />
+            </div>
+            <!--end::Select-->
+          </div>
+        </div>
+      </div>
+      <div class="col-auto">
+        <button (click)="exportToExcel()" class="btn btn-outline btn-outline-success btn-active-light-success me-1">
+          <i class="fa fa-file-excel"></i>
+          {{ l('ExportToExcel') }}
+        </button>
+      </div>
+      <div class="col-auto">
+        <button
+        *ngIf="isGranted('Pages.EntrepreneurAttendance.Create')"
+        (click)="createEntrepreneurAttendance()"
+        class="btn btn-primary blue"
+      >
+        <i class="fa fa-plus"></i>
+        {{ l('CreateNewEntrepreneurAttendance') }}
+      </button>
+      </div>
+      
+
+      
+      </div>
+    </sub-header>
+
+    <div [class]="containerClass">
+      <div class="card card-custom gutter-b mt-5">
+        <div class="card-body">
+          <div id="kt_table_widget_4_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="table-responsive">
+              <table
+                class="table align-middle table-row-dashed fs-6 gy-2 dataTable no-footer"
+                id="kt_table_widget_4_table"
+              >
+                <thead>
+                  <tr class="text-start text-gray-700 fw-bold fs-3 text-uppercase gs-0">
+                    <th class="min-w-100px sorting_disabled" style="width: 100px">COURSE NAME</th>
+                    <th class="text-start min-w-100px sorting_disabled" style="width: 100px">NARRATION</th>
+
+                    <th class="sorting_disabled" style="width: 25px; margin-left: 20px">INSTRUCTORS</th>
+                  </tr>
+                </thead>
+                <tbody class="fw-bold text-gray-700">
+                  <tr class="odd" *ngFor="let items of EntrepreneurAttendance ">
+                    <td>
+                      {{ items.courseName }}
+                    </td>
+                    <td class="text-start">
+                      {{ items.narration }}
+                    </td>
+                    <td class="text-start">
+                      {{ items.instructorsName }}
+                    </td>
+                    
+                    <td>
+                      <!-- <span
+                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                      >
+                        <i class="fa-duotone fa-file-edit fs-2" (click)="createOrEditIndustryModal.showEdit(items.id)">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                        </i>
+                      </span> -->
+
+                      <span
+                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
+                        (click)="deleteEntrepreneurAttendance(items.id)"
+                      >
+                        <i class="fa-duotone fa-trash-alt fs-2">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                        </i>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <biztweak-paginator (paginatorEvent)="getEntrepreneurAttendance($event)" [totalCount]="totalCount"></biztweak-paginator>
+    </div>
+    <createOrEditEntrepreneurAttendanceModal
+      #createOrEditEntrepreneurAttendanceModal
+      (modalSave)="getEntrepreneurAttendance()"
+    ></createOrEditEntrepreneurAttendanceModal>
+    <viewEntrepreneurAttendanceModal #viewEntrepreneurAttendanceModal></viewEntrepreneurAttendanceModal>
+  </div>
+</div>

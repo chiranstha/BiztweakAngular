@@ -1,0 +1,244 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form  [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('EditCourse') }}</span>
+            <span *ngIf="!this.id">{{ l('CreateNewCourse') }}</span>
+          </h4>
+
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+        <!-- component.html -->
+        
+        <div class="my-3">
+          <label class="form-label" for="courseCategoryId">{{ l('courseCategoryId') }}</label>
+          <ng-select
+              [items]=" category$ | async"
+              bindLabel="displayName"
+              bindValue="id"
+              formControlName="courseCategoryId"
+              placeholder="Select a category"
+              required
+            ></ng-select>
+        </div>
+          
+
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('name') }}</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              name="name"
+            />
+          
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="description">{{ l('Description') }}</label>
+            <input
+              type="text"
+            
+              id="description"
+              class="form-control"
+             formControlName="description"
+              name="Description"
+            />
+          </div>
+
+          <!-- <div class="my-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroupFileAddon01">{{ l('CourseImage') }}</span>
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="Course_CourseImage"
+                  name="Course_CourseImage"
+                  aria-describedby="inputGroupFileAddon01"
+                  (change)="onSelectCourseImageFile($event)"
+                  [accept]="courseImageFileAcceptedTypes"
+                />
+                <label class="custom-file-label" #Course_CourseImageLabel for="Course_CourseImage">
+                  {{ l('ChooseAFile') }}
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="courseImageFileName" style="background-color: #e5e5e5; padding: 5px">
+              <span class="font-weight-bold">{{ 'CurrentFile' | localize }} :</span>
+              <div class="alert alert-custom alert-white alert-bold m-1" role="alert">
+                <div class="alert-text">
+                  <a href="{{ getDownloadUrl(course.courseImage) }}" target="_blank">{{ courseImageFileName }}</a>
+                </div>
+                <div class="alert-close">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" (click)="removeCourseImageFile()"><i class="la la-close fa-1x"></i></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="my-3">
+            <label class="form-label" for="introductionVideoType">{{ l('IntroductionVideoType') }}</label>
+            <select
+              class="form-select"
+             
+              name="introductionVideoType"
+              id="introductionVideoType"
+             formControlName="introductionVideoType"
+            >
+              <option value="0">{{ l('Youtube') }}</option>
+
+              <option value="2">{{ l('Upload') }}</option>
+            </select>
+          
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="startDate">{{ l('StartDate') }}</label>
+            <input
+              required
+              formControlName="startDate"
+              class="form-control m-input"
+              #Course_StartDate
+              type="datetime"
+              bsDatepicker
+              datePickerLuxonModifier
+              [(date)]="startDate"
+              id="startDate"
+              name="startDate"
+            />
+          </div>
+
+          
+
+          <div class="my-3">
+            <label class="form-label" for="endDate">{{ l('EndDate') }}</label>
+            <input
+              required
+              formControlName="endDate"
+              class="form-control m-input"
+              #Course_EndDate
+              type="datetime"
+              bsDatepicker
+              datePickerLuxonModifier
+              [(date)]="endDate"
+              id="endDate"
+              name="endDate"
+            />
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="startTime">{{ l('StartTime') }}</label>
+            <input
+              type="text"
+           
+              id="startTime"
+              class="form-control"
+            formControlName="startTime"
+              name="startTime"
+            />
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="endTime">{{ l('EndTime') }}</label>
+            <input
+              type="text"
+           
+              id="endTime"
+              class="form-control"
+            formControlName="endTime"
+              name="EndTime"
+            />
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="coursePhaseLevel">{{ l('CoursePhaseLevel') }}</label>
+            <select
+              class="form-select"
+              
+              name="coursePhaseLevel"
+              id="coursePhaseLevel"
+             formControlName="coursePhaseLevel"
+            >
+              <option value="0">{{ l('Ideation') }}</option>
+
+              <option value="1">{{ l('StartUp') }}</option>
+
+              <option value="2">{{ l('EarlyStage') }}</option>
+            </select>
+            
+          </div>
+
+          <div class="symbol symbol-65px symbol-circle mb-5">
+            <img [src]="courseImageUrl" alt="image">
+                                </div>
+
+          <div class="mb-5">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input
+                       
+                        class="form-control" type="file" id="Image"
+                        id="uploadProfilePicture"
+                        (change)="fileChangeEvent($event)"
+                        
+                        formControlName="courseImageUrl"
+                    />
+                    <label
+                        class="custom-file-label"
+                        #uploadProfilePictureInputLabel
+                        for="uploadProfilePicture"
+                    >
+                        {{ 'ChooseAFile' | localize }}
+                    </label>
+                </div>
+                <span class="form-text text-muted col-lg-12">
+                    {{ 'ProfilePicture_Change_Info' | localize: maxProfilPictureBytesUserFriendlyValue }}
+                </span>
+            </div>
+        </div>
+        <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            [resizeToWidth]="128"
+            format="png"
+            (imageCropped)="imageCroppedFile($event)"
+          
+        ></image-cropper>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button (click)="save()"
+            type="submit"
+            class="btn btn-primary blue"
+            [disabled]="!form.valid"
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+          >
+            <i class="fa fa-save" (click)="save()"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+        {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+ 
+</div>

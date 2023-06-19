@@ -1,0 +1,66 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          <span *ngIf="this.id">{{ l('Edit Course Recommendation') }}</span>
+          <span *ngIf="!this.id">{{ l('Create New Course Recommendation') }}</span>
+        </h4>
+        <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+      </div>
+      
+      <div class="modal-body">
+        
+
+            <div class="my-3">
+              <label for="courseId">Select Courses <span class="required-field">*</span></label>
+              <ng-select #AssignmentType 
+             
+              bindLabel="displayName" [items]=" course$| async" id="courseId"
+                name="courseId" formControlName="courseId" bindValue="id"
+                placeholder="Select Course" required [readonly]="this.id"></ng-select>
+            </div> 
+        <div class="my-3">
+          <label class="form-label" for="remark">{{ l('remark') }} <span class="required-field">*</span></label>
+          <input
+          #remarkRef
+            type="text"
+            id="remark"
+            class="form-control"
+            formControlName="remark"
+            required
+            [ngClass]="{'is-invalid': form.get('remark').invalid && (form.get('remark').dirty || form.get('remark').touched),
+            'is-valid': form.get('remark').valid && (form.get('remark').dirty || form.get('remark').touched)}"
+          />
+        </div>
+   
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+        <button
+          type="submit"
+          class="btn btn-primary blue"
+  
+          [buttonBusy]="saving"
+          [busyText]="l('SavingWithThreeDot')"
+          (click)="save()"
+        >
+          <i class="fa fa-save" ></i>
+          <span>{{ l('Save') }}</span>
+        </button>
+      </div>
+         {{this.form.getRawValue()|json}}
+    </form>
+  </div>
+</div>
+</div>

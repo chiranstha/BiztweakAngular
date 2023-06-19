@@ -1,0 +1,76 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          <span>{{ l('Details') }}</span>
+        </h4>
+
+        <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="row">
+          <div class="col-6 mb-3">
+            <h6>{{ l('Location') }} :</h6>
+            {{ item.location }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Phase') }} :</h6>
+            {{ l(coursePhaseLevel[item.phase]) }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('JobExperience') }} :</h6>
+            {{ item.jobExperience }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Qualification') }} :</h6>
+            {{ item.qualification }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('ShortDescription') }} :</h6>
+            {{ item.shortDescription }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Email') }} :</h6>
+            {{ item.email }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Phone') }} :</h6>
+            {{ item.phone }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Name') }} :</h6>
+            {{ item.name }}
+          </div>
+
+          <div class="col-6 mb-3">
+            <h6>({{ l('Industry') }}) {{ l('Name') }} :</h6>
+            {{ item.industryName }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>({{ l('Bank') }}) {{ l('Name') }} :</h6>
+            {{ item.bankName }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>({{ l('Instructors') }}) {{ l('Name') }} :</h6>
+            {{ item.instructorsName }}
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="saving" type="button" class="btn btn-primary blue" (click)="close()">
+          {{ l('Close') }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

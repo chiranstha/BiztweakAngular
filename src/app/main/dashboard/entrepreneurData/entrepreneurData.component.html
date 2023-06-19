@@ -1,0 +1,402 @@
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+  <div class=" container-xxl " id="kt_content_container">
+    <!-- Instructor Dashboard -->
+    <div class="row gy-5 g-xl-10 mt-4">
+      <div class="dashboard d-flex gap-3">
+          <div class="log">
+          </div>
+          <h4>Overview</h4>
+        </div>
+    
+      <div class="col-xl-3">
+        <div class="card card-xl-stretch mb-xl-10 theme-dark-bg-body" style="background-color: #d7e5eb">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center h-100">
+              <div class="cont">
+                <i class="fa-duotone fa-users"></i>
+              </div>
+          
+              <a  (click)="NavigateToEntrepreneur()" class="text-dark text-hover-primary fw-bold fs-3">Enterpreneurs &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+            </div>
+            
+            <div class="pt-5">
+              <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+            </div>
+            <!--end::Stats-->
+          </div>
+          <!--end::Body-->
+        </div>
+      </div>
+          <div class="col-xl-3">
+            <div class="card card-xl-stretch mb-xl-10 theme-dark-bg-body" style="background-color: #d7e5eb">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center h-100">
+                  <div class="cont">
+                    <i class="fa-duotone fa-thumbs-up"></i>
+                  </div>
+              
+                  <a (click)="NavigateToConsultant()" class="text-dark text-hover-primary fw-bold fs-3">Consultants &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                </div>
+                
+                <div class="pt-5">
+                  <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+                </div>
+                <!--end::Stats-->
+              </div>
+              <!--end::Body-->
+            </div>
+          </div>
+          <div class="col-xl-3">
+            <!--begin::Mixed Widget 14-->
+            <div class="card card-xxl-stretch mb-5 mb-xl-10 theme-dark-bg-body" style="background-color: #dfdbec">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center">
+                  <div class="cont">
+                    <i class="fa-duotone fa-user"></i>
+                  </div>
+               
+                  <a (click)="NavigateToMentors()" class="text-dark text-hover-primary fw-bold fs-3">Mentors &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                </div>
+                
+                <div class="pt-5">
+                  <span class="text-dark fw-bold fs-3x me-2 lh-0">5</span>
+                </div>
+                <!--end::Stats-->
+              </div>
+            </div>
+            <!--end::Mixed Widget 14-->
+          </div>
+          <div class="col-xl-3">
+            <!--begin::Mixed Widget 14-->
+            <div class="card card-xxl-stretch mb-5 mb-xl-10 theme-dark-bg-body" style="background-color: #fbf9d2">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center">
+                  <div class="cont">
+                    <i class="fa-duotone fa-microphone"></i>
+                  </div>
+               
+                  <a (click)="NavigateToIncubator()" class="text-dark text-hover-primary fw-bold fs-3">Incubators &nbsp;<i class="fa-duotone fa-circle-info"></i></a>
+                </div>
+                
+                <div class="pt-5">
+                  <span class="text-dark fw-bold fs-3x me-2 lh-0">15</span>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- Entrepreneurs Section  -->
+
+      <div class="card mb-5 mb-xl-10">
+        <div class="card-header border-0 pt-5">
+          <h3 class="card-title align-items-start flex-column">
+              <div class="dashboard d-flex gap-3">
+                  <div class="log">
+                  </div>
+                  <span class="card-label fw-bold fs-3 mb-1">Entrepreneurs</span>
+                </div>
+            
+            
+ 
+          </h3>
+          <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+            data-bs-original-title="Click to add a user" data-kt-initialized="1">
+            <a href="#" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal"
+              data-bs-target="#kt_modal_invite_friends">
+              <i class="ki-duotone ki-plus fs-2"></i> Non registered bussiness
+            </a>
+          </div>
+        </div>
+        <div class="card-body py-3">
+         
+          <div class="table-responsive">
+            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+              <thead>
+                <tr class="fw-bold text-muted">
+                  <th class="min-w-20px">Id</th>
+                  <th class="min-w-100px">Company</th>
+                  <th class="min-w-150px">Location</th>
+                  <th class="min-w-100px">Phase</th>
+                  <th class="min-w-100px">Industry</th>
+                  <th class="min-w-50px">Employees</th>
+                  <th class="min-w-50px">Turnover</th> 
+                   <th class="min-w-50px">Bizrating</th>
+                  <th class="min-w-100px text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class=" align-items-center">
+                      <h2>1</h2>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Thabo Mokwele
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Johannesburg, South Africa
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Idea/Concept
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Other
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      5 
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      R 0.00
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      9.47
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+                      <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                      </a>
+                      <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                        <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                            class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class=" align-items-center">
+                      <h2>2</h2>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Thabo Mokwele
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Johannesburg, South Africa
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Idea/Concept
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Other
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      5 
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      R 0.00
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      9.47
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+                      <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                      </a>
+                      <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                        <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                            class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class=" align-items-center">
+                      <h2>3</h2>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Thabo Mokwele
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Johannesburg, South Africa
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Idea/Concept
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Other
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      5 
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      R 0.00
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      9.47
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+                      <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                      </a>
+                      <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                        <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                            class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class=" align-items-center">
+                      <h2>4</h2>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Thabo Mokwele
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Johannesburg, South Africa
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Idea/Concept
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Other
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      5 
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      R 0.00
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      9.47
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+                      <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                      </a>
+                      <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                        <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                            class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class=" align-items-center">
+                      <h2>5</h2>
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Thabo Mokwele
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Johannesburg, South Africa
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Idea/Concept
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      Other
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      5 
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      R 0.00
+                    </div>
+                  </td>
+                  <td>
+                    <div class=" align-items-center">
+                      9.47
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+                      <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="fa-duotone fa-eye"><span class="path1"></span><span class="path2"></span></i>
+                      </a>
+                      <a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                        <i class="fa-duotone fa-envelope"><span class="path1"></span><span class="path2"></span><span
+                            class="path3"></span><span class="path4"></span><span class="path5"></span></i> </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <!--end::Table body-->
+            </table>
+            <!--end::Table-->
+          </div>
+          <!--end::Table container-->
+        </div>
+        <!--begin::Body-->
+      </div>
+    </div>
+    <!--end::Container-->
+  </div>

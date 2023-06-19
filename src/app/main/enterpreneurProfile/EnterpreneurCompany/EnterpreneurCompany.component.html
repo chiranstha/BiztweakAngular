@@ -1,0 +1,289 @@
+
+<div class="EntComp">
+  <section id="profile">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+      <div class="col-xl-4 mb-xl-10">
+
+        <div class="card card-flush h-xl-100">
+          <!--begin::Header-->
+          <div class="card-header pt-7">
+            <!--begin::Title-->
+            <h3 class="card-title align-items-start flex-column">
+              <span class="card-label fw-bold text-gray-800">Company Information</span>
+  
+            </h3>
+  
+          </div>
+          <div class="card-body pt-4 px-0">
+  
+  
+            <!--begin::Tab Content-->
+            <div class="tab-content px-9 hover-scroll-overlay-y pe-7 me-3 mb-2" style="height: 390px">
+  
+              <!--begin::Wrapper-->
+              <div class="w-150">
+  
+                <accordion>
+                  <accordion-item *ngFor="let items of companyList">
+                    <ng-template accordionTitle>
+                      <div class="d-flex space-x-2 gap-15">
+                        <p>{{items.name}}</p>
+  
+                      </div>
+  
+                    </ng-template>
+                    <ng-template accordionContent>
+                      <div class="p-4">
+                        <div class="d-flex border border-gray-300 border-dashed rounded p-4 mb-4">
+                          <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                            <div class="symbol symbol-50px me-4" *ngIf="items.logoByte">
+                              <span class="symbol-label">
+                            <img src="data:image/jpeg;base64, {{ items.logoByte}}" alt="{{items.name}}" height="60" width="60">
+                              </span>
+                            </div>
+                            <div class="me-2">
+                              <a
+                                class="text-gray-800 text-hover-primary fs-6 fw-bold">{{items.serviceDescription}}</a>
+  
+                              <span class="text-gray-400 fw-bold d-block fs-7">{{items.location}}</span>
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <button (click)="NavigateToReportSummary(items.id)" type="button" class="btn btn-primary"
+                              style="background-color: #00C2CB; width: 150px; color: white; margin-bottom: 10px;"><i
+                                class="fa-duotone fa-memo"></i> View Biz Report</button>
+                          </div>
+                          <!--end::Info-->
+  
+                        </div>
+                      </div>
+                    </ng-template>
+                  </accordion-item>
+  
+                </accordion>
+              </div>
+              <!--end::Wrapper-->
+  
+            </div>
+            <!--end::Tab Content-->
+          </div>
+          <!--end: Card Body-->
+        </div>
+      </div>
+        <div class="col-8 mt-5">
+          <div class="card shadow-sm">
+
+            <div class="card-body">
+              <div class="alert alert-success mt-4">
+                <strong><i class="fa fa-check"></i> SUCCESS!</strong> Company Assessment Completed.
+              </div>
+              <div class="alert alert-info mt-4">
+                <strong><i class="fa fa-info-circle"></i> Next Step!</strong> Complete your Company Profile.
+              </div>
+              <h4 class="mt-3">Complete Company Profile</h4>
+              <form [formGroup]="form" autocomplete="off">
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label for="name">Company Name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input placeholder="Company name..." name="name"  id="name" 
+                    type="text" value="" class="form-control"
+                    formControlName="name">
+                  </div>
+                </div>
+                <!-- <div class="row my-4">
+                  <div class="col-md-4">
+                      <label>Company Logo</label>
+                  </div>
+                  <div class="col-md-8">
+                      <input name="image" type="file" class="form-control">
+                   </div>
+              </div> -->
+              
+              <div class="symbol symbol-65px symbol-circle mb-5">
+                <img [src]="logoUrl" alt="image">
+              </div>
+              <div class="mb-5">
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input class="form-control" type="file" id="Image" id="uploadProfilePicture"
+                      (change)="fileChangeEvent($event)" formControlName="logoUrl" />
+                    <label class="custom-file-label" #uploadProfilePictureInputLabel for="uploadProfilePicture">
+                      {{ 'ChooseAFile' | localize }}
+                    </label>
+                  </div>
+                  <span class="form-text text-muted col-lg-12">
+                    {{ 'ProfilePicture_Change_Info' | localize: maxProfilPictureBytesUserFriendlyValue }}
+                  </span>
+                </div>
+              </div>
+              <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                [resizeToWidth]="95" format="png" (imageCropped)="imageCroppedFile($event)"></image-cropper>
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label>Is your company registered?</label>
+                  </div>
+                  <div class="col-md-8 gap-5">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="isCompanyRegistered" id="yesRadio" value="true" (change)="updateOptionSelected(form.get('isCompanyRegistered'), true)">
+                      <label class="form-check-label" for="yesRadio">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="isCompanyRegistered" id="noRadio" value="false" checked (change)="updateOptionSelected(form.get('isCompanyRegistered'), false)">
+                      <label class="form-check-label" for="noRadio">No</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="div" *ngIf="form.get('isCompanyRegistered').value === 'true' || form.get('isCompanyRegistered').value === true">
+                  <div class="row my-4">
+                    <div class="col-md-4">
+                      <label>Registration Number</label>
+                    </div>
+                    <div class="col-md-8">
+                      <input placeholder="Company physical address..." name="registrationNumber" type="text" value="" class="form-control" formControlName="registrationNumber">
+                    </div>
+                  </div>
+                  <div class="row my-4">
+                    <div class="col-md-4">
+                      <label for="businessOperationDate">Registration Date</label>
+                    </div>
+                    <div class="col-md-8">
+                      <input id="businessOperationDate" type="text" #SampleDatePicker name="businessOperationDate" class="form-control" placeholder="22/10/2023" formControlName="businessOperationDate" bsDatepicker datePickerLuxonModifier [(date)]="sampleDate" [bsConfig]="{ adaptivePosition: true }" />
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+                
+                
+                
+               
+                
+              <div class="row my-4">
+                <div class="col-md-4">
+                  <label>Select Bank?</label>
+                </div>
+                <div class="col-md-8 gap-5">
+                  <ng-select
+                  [items]="bank$| async"
+                  bindLabel="displayName"
+                  bindValue="id"
+                  placeholder="Select a category"
+                  formControlName="bankId"
+                  required
+                ></ng-select>
+                </div>
+              </div>
+             
+            
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label>Company Location</label>
+                  </div>
+                  <div class="col-md-8">
+                    <!-- <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                     (onAddressChange)="handleAddressChange($event)"
+                     name="location" type="text"
+                     class="form-control" 
+                     placeholder="Company physical address..." 
+                     formControlName="location"/> -->
+                   
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label for="noOfEmployee">Number of employee</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input placeholder="Number of employees..." name="noOfEmployee"  id="noOfEmployee" 
+                    type="number" value="" class="form-control"
+                    formControlName="noOfEmployee">
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label for="annualTurnOver">Annual turnover</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input placeholder="What is your annual turnover" name="annualTurnOver"  id="annualTurnOver" 
+                    type="number" value="" class="form-control"
+                    formControlName="annualTurnOver">
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-md-4">
+                    <label for="monthlyTurnOver">Monthly Turnover (Over 6 months)</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input placeholder="What is your annual turnover" name="monthlyTurnOver"  id="monthlyTurnOver" 
+                    type="number" value="" class="form-control"
+                    formControlName="monthlyTurnOver">
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-md-4">
+                      <label>Products/Services</label>
+                  </div>
+                  <div class="col-md-8">
+                      <textarea id="offering" 
+                      placeholder="What products or services is your company offering?"
+                       name="offering" cols="50" rows="10" class="form-control"
+                       formControlName="serviceDescription"
+                       ></textarea>
+                  </div>
+              </div>
+              <div class="row my-4">
+                <div class="col-md-4">
+                  <label for="description">Description</label>
+                </div>
+                <div class="col-md-8">
+                  <input placeholder="Description..." name="description"  id="description" 
+                  type="text" value="" class="form-control"
+                  formControlName="description">
+                </div>
+              </div>
+              <!-- <div class="row my-4">
+                <div class="col-md-4">
+                  <label for="TurnOver">TurnOvers</label>
+                </div>
+                <div class="col-md-2">
+                  <input placeholder="cardTurnOver" name="cardTurnOver"  id="cardTurnOver" 
+                  type="number" value="" class="form-control"
+                  formControlName="cardTurnOver">
+                </div>
+                <div class="col-md-2">
+                  <input placeholder="cashTurnOver" name="cashTurnOver"  id="cashTurnOver" 
+                  type="number" value="" class="form-control"
+                  formControlName="cashTurnOver">
+                </div>
+                <div class="col-md-2">
+                  <input placeholder="eftTurnOver" name="eftTurnOver"  id="eftTurnOver" 
+                  type="number" value="" class="form-control"
+                  formControlName="eftTurnOver">
+                </div>
+              </div> -->
+          
+  
+              <div class="row my-4">
+                <div class="col-12 text-end">
+                    <button class="btn btn-outline-info text-white">Back</button>
+                    <button class="btn btn-info text-white" (click)="save()" >Save</button>
+                </div>
+            </div>
+              </form>
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{{this.form.getRawValue()|json}}

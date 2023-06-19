@@ -1,0 +1,97 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          <span>{{ l('Details') }}</span>
+        </h4>
+
+        <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="row">
+          <div class="col-6 mb-3">
+            <h6>{{ l('Name') }} :</h6>
+            {{ item.name }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Description') }} :</h6>
+            {{ item.description }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Logo') }} :</h6>
+            <a href="{{ getDownloadUrl(item.logo) }}" target="_blank">{{ item.logoFileName }}</a>
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('IsCompanyRegistered') }} :</h6>
+            <div *ngIf="item.isCompanyRegistered" class="text-left">
+              <i class="fa fa-check-circle text-success" title="True"></i>
+            </div>
+            <div *ngIf="!item.isCompanyRegistered" class="text-left">
+              <i class="fa fa-times-circle" title="False"></i>
+            </div>
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('Location') }} :</h6>
+            {{ item.location }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('NoOfEmployee') }} :</h6>
+            {{ item.noOfEmployee }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('AnnualTurnOver') }} :</h6>
+            {{ item.annualTurnOver }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('MonthlyTurnOver') }} :</h6>
+            {{ item.monthlyTurnOver }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('ServiceDescription') }} :</h6>
+            {{ item.serviceDescription }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('BusinessOperationDate') }} :</h6>
+            {{ item.businessOperationDate | luxonFormat : 'yyyy-LL-dd HH:mm:ss' }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('CardTurnOver') }} :</h6>
+            {{ item.cardTurnOver }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('CashTurnOver') }} :</h6>
+            {{ item.cashTurnOver }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>{{ l('EftTurnOver') }} :</h6>
+            {{ item.eftTurnOver }}
+          </div>
+
+          <div class="col-6 mb-3">
+            <h6>({{ l('Entrepreneur') }}) {{ l('Name') }} :</h6>
+            {{ item.entrepreneurName }}
+          </div>
+          <div class="col-6 mb-3">
+            <h6>({{ l('Industry') }}) {{ l('Name') }} :</h6>
+            {{ item.industryName }}
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="saving" type="button" class="btn btn-primary blue" (click)="close()">
+          {{ l('Close') }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

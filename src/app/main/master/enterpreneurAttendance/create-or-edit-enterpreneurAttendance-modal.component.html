@@ -1,0 +1,58 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-content">
+        <form [formGroup]="form" autocomplete="off">
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <span *ngIf="this.id">{{ l('Edit Enterpreneur Attendance') }}</span>
+              <span *ngIf="!this.id">{{ l('Create New  Enterpreneur Attendance') }}</span>
+            </h4>
+            <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+          </div>
+          <div class="modal-body">
+            <div class="my-3">
+              <label class="form-label" for="entrepreneurId">{{ l('entrepreneurId') }}</label>
+              <ng-select [items]="   enterpreneur$| async" bindLabel="displayName" bindValue="entrepreneurId"
+                formControlName="entrepreneurId" placeholder="Select an dighiat Catagory" required></ng-select>
+            </div>
+         
+            <div class="my-3">
+              <label class="form-label" for="remark">{{ l('remark') }}</label>
+              <input
+                type="text"
+                
+                id="remark"
+                class="form-control"
+                formControlName="remark"
+              />
+            </div>
+           
+          </div>
+          <div class="modal-footer">
+            <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+            <button
+              type="submit"
+              class="btn btn-primary blue"
+            
+              (click)="save()"
+            >
+              <i class="fa fa-save" ></i>
+              <span>{{ l('Save') }}</span>
+            </button>
+          </div>
+             {{this.form.getRawValue()|json}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

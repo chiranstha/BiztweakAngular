@@ -1,0 +1,127 @@
+﻿<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Assignment') }}</span>
+            <span *ngIf="!this.id">{{ l('Create Assignment') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card shadow-sm">
+
+            <div class="card-body">
+              <!-- Creation Of Form  -->
+              <div class="my-3">
+                <label for="course">Select Business Phase:</label>
+                <ng-select #class bindLabel="displayName" 
+                (change)="getAssignmentCategory(this.form.get('businessPhaseId').value)"
+                [items]="businesss$ | async" id="businessPhaseId"
+                  name="businessPhaseId" formControlName="businessPhaseId" bindValue="id"
+                  placeholder="Select items" required [readonly]="this.id"></ng-select>
+              </div>
+              <div class="my-3">
+                <label for="assignmentCategoryId">Select Assignment catagory:</label>
+                <ng-select #class bindLabel="displayName" [items]="catagory$ | async" id="assignmentCategoryId"
+                  name="assignmentCategoryId" formControlName="assignmentCategoryId" bindValue="id"
+                  placeholder="Select items" required ></ng-select>
+              </div>
+              <div class="my-3">
+                <label class="form-label" for="name">{{ l('Name') }}</label>
+                <input type="text" id="name" class="form-control" formControlName="name" />
+              </div>
+              <div class="my-3">
+                <label class="form-label" for="shortDescription">{{ l('shortDescription') }}</label>
+                <input type="text" id="shortDescription" class="form-control" formControlName="shortDescription" />
+              </div>
+              <div class="my-3">
+                <label class="form-label" for="order">{{ l('order') }}</label>
+                <input type="number" id="order" class="form-control" formControlName="order" />
+              </div>
+              <!-- <div class="my-3">
+                <label for="course">Select  assignment Catagory:</label>
+                <ng-select #class bindLabel="displayName" [items]="catagory$ | async" id="assignmentCategoryId"
+                  name="assignmentCategoryId" formControlName="assignmentCategoryId" bindValue="id"
+                  placeholder="Select items" required [readonly]="this.id"></ng-select>
+              </div> -->
+              <div class="table table-bordered table-sm table-hover" formArrayName="assignmentOptions">
+                <div *ngFor="let assign of assignmentOptions().controls; let empIndex = index"
+                  [formGroupName]="empIndex" class="carrd">
+                  <div class="card shadow-sm">
+                    <div class="card-header">
+                      <h3 class="card-title">assignmentOptions</h3>
+                      <div class="card-toolbar">
+                        <button type="button"  class="btn btn-primary blue" (click)="addassignmentOptions()">
+                          <i class="fa-duotone fa-circle-plus"></i> Add
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <!-- Form Array Begins  -->
+                      <div class="my-3">
+                        <label class="form-label" for="name">{{ l('name') }}</label>
+                        <input type="text" id="name" class="form-control" formControlName="name" />
+
+
+                      </div>
+                      <div class="card shadow-sm">
+                        <div class="card-header">
+                          <h3 class="card-title">Recommendations</h3>
+                          <div class="card-toolbar">
+                            <button type="button" class="btn btn-primary blue" (click)="addRecommendationForm(empIndex)">
+                              <i class="fa-duotone fa-circle-plus"></i>  Add
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                       
+                        formArrayName="recommendations"
+                    >
+                        <div
+                            *ngFor="
+                                let ans of recommendationdetails(empIndex).controls;
+                                let ansIndex = index
+                            "
+                            [formGroupName]="ansIndex"
+                            class="carrd"
+                        >
+                            <div class="card-body">
+                            
+                              <div class="my-3">
+                                <label for="course">Select  Course Catagory:</label>
+                                <ng-select #class bindLabel="displayName" [items]=" course$| async" id="courseId"
+                                  name="courseId" formControlName="courseId" bindValue="id"
+                                  placeholder="Select items" required [readonly]="this.id"></ng-select>
+                
+                              </div>
+                            </div>
+</div>
+</div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel')
+                }}</button>
+              <button type="submit" class="btn btn-primary blue" [buttonBusy]="saving"
+                [busyText]="l('SavingWithThreeDot')" (click)="save()">
+                <i class="fa fa-save"></i>
+                <span>{{ l('Save') }}</span>
+              </button>
+            </div>
+            {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+</div>

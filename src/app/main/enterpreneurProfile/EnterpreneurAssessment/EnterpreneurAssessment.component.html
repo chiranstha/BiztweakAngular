@@ -1,0 +1,177 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 mb-xl-10 d-none d-sm-block">
+      <div class="card card-flush h-xl-100">
+        <!--begin::Header-->
+        <div class="card-header pt-7">
+          <!--begin::Title-->
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Company Information</span>
+            <!-- <span class="text-gray-400 mt-1 fw-semibold fs-6">56 deliveries in progress</span> -->
+          </h3>
+        </div>
+        <!--end::Header-->
+
+        <!--begin::Body-->
+        <div class="card-body pt-4 px-0">
+          <!--begin::Tab Content-->
+          <div class="tab-content px-9 hover-scroll-overlay-y pe-7 me-3 mb-2" style="height: 390px">
+            <!--begin::Wrapper-->
+            <div class="w-150">
+              <accordion>
+                <accordion-item *ngFor="let items of companyList">
+                  <ng-template accordionTitle>
+                    <div class="d-flex space-x-2 gap-15">
+                      <p>{{ items.name }}</p>
+                    </div>
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="p-4">
+                      <div class="d-flex border border-gray-300 border-dashed rounded p-4 mb-4">
+                        <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                          <div class="symbol symbol-50px me-4" *ngIf="items.logoByte">
+                            <span class="symbol-label">
+                              <img
+                                src="data:image/jpeg;base64, {{ items.logoByte }}"
+                                alt="{{ items.name }}"
+                                height="60"
+                                width="60"
+                              />
+                            </span>
+                          </div>
+                          <div class="me-2">
+                            <a class="text-gray-800 text-hover-primary fs-6 fw-bold">
+                              {{ items.serviceDescription }}
+                            </a>
+
+                            <span class="text-gray-400 fw-bold d-block fs-7">{{ items.location }}</span>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <button
+                            (click)="NavigateToReportSummary(items.id)"
+                            type="button"
+                            class="btn btn-primary"
+                            style="background-color: #00c2cb; width: 150px; color: white; margin-bottom: 10px"
+                          >
+                            <i class="fa-duotone fa-memo"></i>
+                            View Biz Report
+                          </button>
+                        </div>
+                        <!--end::Info-->
+                      </div>
+                    </div>
+                  </ng-template>
+                </accordion-item>
+              </accordion>
+            </div>
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Tab Content-->
+        </div>
+        <!--end: Card Body-->
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="card p-10">
+        <div class="alert alert-primary mt-4">
+          <strong>
+            <i class="fa fa-info-circle"></i>
+            Next Step!
+          </strong>
+          Complete your Company Assessment..
+        </div>
+        <div class="card my-3 bg-light">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <img
+                src="https://biztweak.org.za/new/images/company.png"
+                class="img-fluid rounded-circle me-4"
+                alt=""
+                style="height: 80px; width: 80px"
+              />
+              <div>
+                <h4></h4>
+                <p>
+                  <b>Location:</b>
+                  n/a
+                </p>
+                <p>
+                  <b>Industry:</b>
+                  {{ this.companyInfo.industryName }}
+                </p>
+                <p>
+                  <b>Business phase:</b>
+                  {{ this.companyInfo.businessPhaseName }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="form" autocomplete="off">
+          <accordion formArrayName="categoryDetail">
+            <accordion-item
+              *ngFor="let cata of getcategoryDetail().controls; let empIndex = index"
+              [formGroupName]="empIndex"
+            >
+              <ng-template accordionTitle>
+                <h3>{{ cata.get('categoryName').value }}</h3>
+              </ng-template>
+              <ng-template accordionContent>
+                <div class="accordion-content" formArrayName="assignmentDetail">
+                  <div
+                    class="div"
+                    *ngFor="let ans of assignmentDetail(empIndex).controls; let assignIndex = index"
+                    [formGroupName]="assignIndex"
+                  >
+                    <div *ngIf="!ans.get('isHidden').value">
+                      <h5 style="padding-left: 10px">{{ ans.get('assignmentName').value }}</h5>
+                      <div style="padding-left: 20px">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="prototype-yes-{{ empIndex }}-{{ assignIndex }}-{{ assignIndex }}"
+                          name="prototype-{{ empIndex }}-{{ assignIndex }}"
+                          value="yes"
+                          style="margin-right: 10px;"
+                          [ngClass]="{'selected-radio': ans.get('isOptionSelected') === true}"
+                          (change)="
+                            updateOptionSelected(ans.get('isOptionSelected'), true);
+                            removeAssignmentDetail(empIndex, assignIndex)
+                          "
+                        />
+                        <label for="prototype-yes-{{ empIndex }}-{{ assignIndex }}-{{ assignIndex }}">Yes</label>
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="prototype-no-{{ empIndex }}-{{ assignIndex }}-{{ assignIndex }}"
+                          name="prototype-{{ empIndex }}-{{ assignIndex }}"
+                          value="no"
+                          style="margin-left: 10px;"
+                          [ngClass]="{'selected-radio': ans.get('isOptionSelected') === false}"
+                          (change)="
+                            updateOptionSelected(ans.get('isOptionSelected'), false);
+                            removeAssignmentDetail(empIndex, assignIndex)
+                          "
+                        />
+                        <label for="prototype-no-{{ empIndex }}-{{ assignIndex }}-{{ assignIndex }}" style="margin-left: 10px;">No</label>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </accordion-item>
+          </accordion>
+        </form>
+        <div class="row my-4">
+          <div class="col-12 text-end">
+            <button class="btn btn-primary text-white" (click)="save()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ {{this.form.value | json}}

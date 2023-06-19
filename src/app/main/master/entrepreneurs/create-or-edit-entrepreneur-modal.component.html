@@ -1,0 +1,99 @@
+﻿<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Entrepreneur') }}</span>
+            <span *ngIf="!this.id">{{ l('Create Entrepreneur') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+          <div class="my-3">
+            <label class="form-label" for="industryId">{{ l('industryId') }}</label>
+            <ng-select [items]=" industry$| async" bindLabel="displayName" bindValue="id"
+              formControlName="industryId" placeholder="Select an industry" required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="bankId">{{ l('bankId') }}</label>
+            <ng-select [items]="  bank$| async" bindLabel="displayName" bindValue="id" formControlName="bankId"
+              placeholder="Select an industry" required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="instructorsId">{{ l('instructorsId') }}</label>
+            <ng-select [items]="    instructor$| async" bindLabel="displayName" bindValue="id"
+              formControlName="instructorsId" placeholder="Select an industry" required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('name') }}</label>
+            <input type="text" id="name" class="form-control" formControlName="name" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="email">{{ l('email') }}</label>
+            <input type="text" id="email" class="form-control" formControlName="email" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="phone">{{ l('phone') }}</label>
+            <input type="number" id="phone" class="form-control" formControlName="phone" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="location">{{ l('location') }}</label>
+            <input type="text" id="location" class="form-control" formControlName="location" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="phase">{{ l('phase') }}</label>
+
+
+
+            <ng-select #phases formControlName="phase" id="phase" placeholder="Select an item">
+              <ng-option *ngFor="let item of phase" [value]="item">
+                {{ phaseLabelMapping[item] }}
+              </ng-option>
+            </ng-select>
+
+            <div *ngIf="
+                                                                form.get('phase').invalid &&
+                                                                (form.get('phase').dirty || form.get('phase').touched)
+                                                            ">
+
+              <div class="alert alert-primary d-flex align-items-center p-5">
+                <h4 class="mb-1 text-dark">required</h4>
+              </div>
+            </div>
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="jobExpreience">{{ l('jobExprience') }}</label>
+            <input type="text" id="jobExpreience" class="form-control" formControlName="jobExpreience" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="qualification">{{ l('qualification') }}</label>
+            <input type="text" id="qualification" class="form-control" formControlName="qualification" />
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="shortDescription">{{ l('shortDescription') }}</label>
+            <input type="shortDescription" id="shortDescription" class="form-control"
+              formControlName="shortDescription" />
+
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button type="submit" class="btn btn-primary blue" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"
+            (click)="save()">
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+        {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1595" height="695" viewBox="0 0 1595 695">
+  <g id="app-logo-on-light" transform="translate(-140 -88)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="259.5" cy="259.5" r="259.5" transform="translate(140 88)" fill="#1c92a5"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="259.5" cy="259.5" r="259.5" transform="translate(364 88)" fill="#1c92a5" opacity="0.78"/>
+    <text id="BizTweak" transform="translate(208 744)" fill="#090909" font-size="154" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">BizTweak</tspan></text>
+    <line id="Line_1" data-name="Line 1" y2="655" transform="translate(960 89)" fill="none" stroke="#1b92a4" stroke-width="20"/>
+    <text id="Making_Entrepreneurship_Easier" data-name="Making
+Entrepreneurship
+Easier" transform="translate(1036 354)" fill="#0a0a0a" font-size="89" font-family="Segoe UI Variable Display" font-weight="600"><tspan x="0" y="0">Making</tspan><tspan x="0" y="118">Entrepreneurship</tspan><tspan x="0" y="236">Easier</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header border-0">
+          <h4 class="modal-title">
+           
+            <span>{{ l('Create New Company') }}</span>
+          </h4>
+        
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <img src="https://www.biztweak.org.za/new/images/add-company.png" alt="" class="col-md-6 img-fluid" />
+          </div>
+
+          
+          <div class="form-group my-3">
+            <div class="col-auto">
+              <div class="form-floating">
+                <div class="my-3">
+                  <label class="form-label" for="industryId">{{ l('Select Industry') }}</label>
+                  <ng-select
+                      [items]=" industry$ | async"
+                      bindLabel="displayName"
+                      
+                      bindValue="id"
+                      placeholder="Select a category"
+                      formControlName="industryId"
+                      required
+                    ></ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group my-3">
+            <div class="col-auto">
+              <div class="form-floating">
+                <div class="my-3">
+                  <label class="form-label" for="businessPhaseId">{{ l('Select Business Phase') }}</label>
+                  <ng-select
+                      [items]=" phase$ | async"
+                      bindLabel="displayName"
+                      bindValue="id"
+                      placeholder="Select a category"
+                      formControlName="businessPhaseId"
+                      required
+                    ></ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-primary blue"
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+            (click)="save()"
+          >
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,222 @@
+
+
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header border-0">
+          <h3 class="card-title">Profile</h3>
+      </div>
+      <div class="card-body">
+        <div class="div">
+          <img src="../../../../assets/images/image.png" alt="">
+        </div>
+                 
+                  <div class="UserName">
+                      <h2>John Wick</h2>
+                  </div>
+                      <div class="widget-content">
+                          <ul>
+                              <li><span><i class="fa-duotone fa-calendar"></i>johnsmith@gmail.com</span></li>
+                              <li><span><i class="fa-duotone fa-location-dot"></i>4 Modise Street, Atteridgeville</span></li>
+                              <li><span><i class="fa-duotone fa-graduation-cap"></i>Tshwane University of Technology,Pretoria.</span></li>
+                              <button class="btn ">Protective</button>
+                              <button class="btn ">information architecture</button>
+                              <button class="btn ">Visual</button>
+                              <button class="btn ">Protective</button>
+                              <button class="btn ">Protective</button>
+                          </ul>
+                      </div>
+                  
+                  <div class="CompanyLeft" *ngFor="let items of CompanyData">
+                      <h3>Company  <i class="fa-duotone fa-trophy"></i></h3>
+                      <div class="CompanyCreated mb-2">
+                        <div class="d-flex align-items-center me-5 me-xl-13">
+
+                          <div class="symbol symbol-30px symbol-circle me-3">                                                   
+                              <img src="../../../../assets/images/icons/investor.png" class="" alt="">                                                    
+                          </div>
+                          <div class="Tex m-0">                            
+                              <span class="fw-semibold d-block fs-8">{{items.name}}</span>
+                              <a class="fw-bold text-white-800 text-hover-primary fs-7">{{items.description}}</a>
+                          </div>
+                   
+                      </div>
+                      </div>
+                      
+                      <button class="btn  ng-star-inserted" ><i class="fa fa-plus ng-tns-c266-14"></i> Add Company</button>
+                  </div>
+                     
+              </div>
+          </div>
+      </div>
+  <div class="col-8">
+    <div class="card card-bordered">
+      <div class="card-header border-0">
+        <div class="d-flex gap-3 mt-5">
+          <div class="log">
+          </div>
+          <h2>Profile Setting</h2>
+          </div>
+        <div class="card-toolbar">
+    
+          <button type="button" class="btn btn-sm btn-primary" (click)="save()">Save</button>
+        </div>
+      </div>
+      <div class="card-body p-10">
+  
+        <form [formGroup]="form" autocomplete="off">
+    
+          <div class="container">
+            <div class="profileInfo d-flex gap-3 mt-5">
+              <div class="log">
+              </div>
+              <h3>Profile Information</h3>
+              </div>
+          
+              <div class="row">
+                <div class="mb-2 mt-5">
+                  <label class="form-label w-100">{{ l('Company Logo') }}</label>
+                  <div class="symbol symbol-65px symbol-circle mb-5">
+    
+                    <img [src]="logoUrl" alt="image">
+                  </div>
+                  <div class="mb-5">
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input class="form-control" type="file" id="Image" id="uploadProfilePicture"
+                          (change)="fileChangeEvent($event)" formControlName="logoUrl" />
+                        <label class="custom-file-label" #uploadProfilePictureInputLabel for="uploadProfilePicture">
+                          {{ 'ChooseAFile' | localize }}
+                        </label>
+                      </div>
+                      <span class="form-text text-muted col-lg-12">
+                        {{ 'ProfilePicture_Change_Info' | localize: maxProfilPictureBytesUserFriendlyValue }}
+                      </span>
+                    </div>
+                  </div>
+                  <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                    [resizeToWidth]="128" format="png" (imageCropped)="imageCroppedFile($event)"></image-cropper>
+                </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label class=" form-label" for="displayname">{{ l('Display Name') }}</label> &nbsp;<i class="fa-duotone fa-circle-info"></i>
+                        <input type="text" id="name" class="form-control" formControlName="displayname" name="displayname" />
+                      </div>
+                    </div>
+          
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label class=" form-label" for="email">{{ l('Email') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                        <input type="text" id="email" class="form-control" formControlName="email" name="email" />
+                      </div>
+                    </div>
+          
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label class=" form-label" for="education">{{ l('Educational Background') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                        <input type="text" id="education" class="form-control" formControlName="education"
+                          name="education" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label class=" form-label" for="location">{{ l('Location ') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                        <input type="text" id="location" class="form-control" formControlName="location"
+                          name="location" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-2">
+                        <label class=" form-label" for="skills">{{ l('Skills ') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                        <input type="text" id="skills" class="form-control" formControlName="skills"
+                          name="skills" />
+                      </div>
+                    </div>
+                  </div>
+               
+               
+                 
+               
+              </div>
+              <div class="d-flex gap-3 mt-5">
+                <div class="log">
+                </div>
+                
+                <h3>Login</h3>
+                </div>
+            
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-2">
+                  <label class=" form-label" for="oldpw">{{ l('Old Password ') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                  <input type="text" id="oldpw" class="form-control" formControlName="oldpw"
+                    name="skills" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-2">
+                  <label class=" form-label" for="newpw">{{ l('New Password ') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                  <input type="text" id="newpw" class="form-control" formControlName="newpw"
+                    name="skills" />
+                </div>
+              </div>
+              <div class="col-4">
+                  <div class="mb-2">
+                    <label class=" form-label" for="cnewpw">{{ l('Confirm New Password ') }}</label>&nbsp;<i class="fa-duotone fa-circle-info"></i>
+                    <input type="text" id="cnewpw" class="form-control" formControlName="cnewpw"
+                      name="skills" />
+                  </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mb-5">Update Password</button>
+            <div class="NotificationLog d-flex gap-3 mt-5">
+              <div class="log">
+              </div>
+            <h3>Notification</h3>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-2">
+                  <label class=" form-label">{{ l('Product updates and community announcements') }}</label> &nbsp;<i class="fa-duotone fa-circle-info"></i>
+                  <label class="switch"> 
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+              </div>
+           
+            </div>
+           
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-2">
+                  <!-- <label class=" form-label" for="newsletter">{{ l('Market Newsletter') }}</label> &nbsp;<i class="fa-duotone fa-circle-info"></i> -->
+                  <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+        
+        <!-- {{this.form | json}} -->
+        </form>
+      
+      </div>
+    </div>
+    
+  </div>
+</div> 

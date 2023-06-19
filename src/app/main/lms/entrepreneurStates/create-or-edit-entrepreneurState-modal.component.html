@@ -1,0 +1,91 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Growth Plan') }}</span>
+            <span *ngIf="!this.id">{{ l('Create New Growth Plan') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+         
+          <div class="my-3">
+            <label class="form-label" for="sessionHighlight">{{ l('sessionHighlight') }}</label>
+            <input type="text" id="sessionHighlight" class="form-control" formControlName="sessionHighlight" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="generalComment">{{ l('generalComment') }}</label>
+            <input type="text" id="generalComment" class="form-control" formControlName="generalComment" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('name') }}</label>
+            <input type="text" id="name" class="form-control" formControlName="name" />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="entrepreneurId">{{ l('entrepreneurId') }}</label>
+            <ng-select [items]="  entrepreneur$| async" bindLabel="displayName" bindValue="entrepreneurId"
+              formControlName="entrepreneurId" placeholder="Select an industry" required></ng-select>
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="instructorsId">{{ l('instructorsId') }}</label>
+            <ng-select [items]="   Instructor$| async" bindLabel="displayName" bindValue="instructorsId"
+              formControlName="instructorsId" placeholder="Select an industry" required></ng-select>
+          </div>
+    
+          <div *ngFor="let assign of entrepreneurDetails().controls; let empIndex = index"
+          [formGroupName]="empIndex" class="carrd">
+          <div class="card shadow-sm mb-2">
+            <div class="card-header">
+                <h3 class="card-title">Details</h3>
+                <div class="card-toolbar">
+                  <button type="button"  class="btn btn-primary blue" (click)="addentrepreneurDetails()">
+                    <i class="fa-duotone fa-circle-plus"></i> Add
+                  </button>
+                </div>
+            </div>
+            <div class="card-body">
+              <div class="my-3">
+                <label class="form-label" for="name">{{ l('Name') }}</label>
+                <input type="text" id="name" class="form-control" formControlName="name" />
+              </div>
+              <div class="my-3">
+                <label class="form-label" for="description">{{ l('description') }}</label>
+                <input type="text" id="description" class="form-control" formControlName="description" />
+              </div>
+              <div class="my-3">
+                <label class="form-label" for="order">{{ l('order') }}</label>
+                <input type="number" id="order" class="form-control" formControlName="order" />
+              </div>
+            </div>
+          
+        </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button type="submit" class="btn btn-primary blue" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"
+            (click)="save()">
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+        {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+  <!-- <entrepreneurStateEntrepreneurLookupTableModal
+    #entrepreneurStateEntrepreneurLookupTableModal
+    (modalSave)="getNewEntrepreneurId(id)"
+  ></entrepreneurStateEntrepreneurLookupTableModal> -->
+</div>

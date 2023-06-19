@@ -1,0 +1,91 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- <form *ngIf="active" #entrepreneurAssigmentForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="entrepreneurAssigment.id">{{ l('EditEntrepreneurAssigment') }}</span>
+            <span *ngIf="!entrepreneurAssigment.id">{{ l('CreateNewEntrepreneurAssigment') }}</span>
+          </h4>
+
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        <div class="modal-body">
+          <div class="my-3">
+            <label class="form-label" for="AssignmentName">{{ l('Assignment') }}</label>
+            <select
+              name="entrepreneurAssigment.assignmentId"
+              [(ngModel)]="entrepreneurAssigment.assignmentId"
+              class="form-select"
+              required
+            >
+              <option value="">{{ l('SelectAAssignment') }}</option>
+              <option *ngFor="let item of allAssignments" value="{{ item.id }}">{{ item.displayName }}</option>
+            </select>
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="AssignmentOptionName">{{ l('AssignmentOption') }}</label>
+            <select
+              name="entrepreneurAssigment.assignmentOptionId"
+              [(ngModel)]="entrepreneurAssigment.assignmentOptionId"
+              class="form-select"
+              required
+            >
+              <option value="">{{ l('SelectAAssignmentOption') }}</option>
+              <option *ngFor="let item of allAssignmentOptions" value="{{ item.id }}">{{ item.displayName }}</option>
+            </select>
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="EntrepreneurName">{{ l('Entrepreneur') }}</label>
+            <select
+              name="entrepreneurAssigment.entrepreneurId"
+              [(ngModel)]="entrepreneurAssigment.entrepreneurId"
+              class="form-select"
+              required
+            >
+              <option value="">{{ l('SelectAEntrepreneur') }}</option>
+              <option *ngFor="let item of allEntrepreneurs" value="{{ item.id }}">{{ item.displayName }}</option>
+            </select>
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="EntrepreneurAssigment_Remark">{{ l('Remark') }}</label>
+            <input
+              type="text"
+              #EntrepreneurAssigment_Remark="ngModel"
+              id="EntrepreneurAssigment_Remark"
+              class="form-control"
+              [(ngModel)]="remark"
+              name="Remark"
+            />
+            <validation-messages [formCtrl]="EntrepreneurAssigment_Remark"></validation-messages>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button
+            type="submit"
+            class="btn btn-primary blue"
+            [disabled]="!entrepreneurAssigmentForm.form.valid"
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+          >
+            <i class="fa fa-save"></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+      </form> -->
+    </div>
+  </div>
+</div>

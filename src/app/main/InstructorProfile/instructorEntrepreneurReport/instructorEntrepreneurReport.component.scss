@@ -1,0 +1,198 @@
+.my-button {
+    background: #FFFFFF;
+    border-radius: 8px;
+border-color: #67c7d0;
+  }
+  
+  .icon-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px 20px 0;
+    width: calc(50% - 20px);
+  }
+  
+  
+  .icon-wrapper span {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .Stages{
+    background-color: #f7f7fc;
+  }
+  .cont i{
+    color: #ffff;
+    font-size: 30px;
+     margin-bottom: 8px;
+    border: 2px solid #1b1d1f;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #1b1d1f;
+  }
+  .table thead tr {
+    border-bottom: none;
+  }
+  
+  table td {
+    background-color: #f7f7fc;
+  }
+  
+
+
+  @import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+
+$bg: #fff;
+$text: #7288a2;
+$gray: #4d5974;
+$lightgray: #e5e5e5;
+$blue: #03b5d2;
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Hind', sans-serif;
+  background: $bg;
+  color: $gray;
+  display: flex;
+  min-height: 100vh;
+}
+.Recommendation, .Jobs, .Business{
+  margin-top: 2%;
+  margin-left: 2%
+}
+ul {
+  list-style: none;
+  font-size: 18px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 4rem;
+  width: 48rem;
+}
+
+.accordion {
+  height: auto;
+  .accordion-item {
+    border-bottom: 1px solid $lightgray;
+    margin-left: 20px;
+    margin-right: 20px;
+    button[aria-expanded='true'] {
+      border-bottom: 1px solid $blue;
+    }
+  }
+  button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: $text;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+    &:hover, &:focus {
+      cursor: pointer;
+      color: $blue;
+      &::after {
+        cursor: pointer;
+        color: $blue;
+        border: 1px solid $blue;
+      }
+    }
+    .accordion-title {
+      padding: 1em 1.5em 1em 0;
+    }
+    .icon {
+      display: inline-block;
+      position: absolute;
+      top: 18px;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid;
+      border-radius: 22px;
+      &::before {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 9px;
+        left: 5px;
+        width: 10px;
+        height: 2px;
+        background: currentColor;
+      }
+      &::after {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 5px;
+        left: 9px;
+        width: 2px;
+        height: 10px;
+        background: currentColor;
+      }
+    }
+  }
+  button[aria-expanded='true'] {
+    color: $blue;
+    .icon {
+      &::after {
+        width: 0;
+      }
+    }
+    + .accordion-content {
+      opacity: 1;
+      max-height: 20em;
+      transition: all 200ms linear;
+      will-change: opacity, max-height;
+    }
+  }
+  .accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 2em 0;
+    }
+  }
+}
+i {
+  border: 2px solid #00C2CB;
+  border-radius: 50%;
+  padding: 8px;
+  background-color: #edfbfb;
+  margin-left: 5px;
+}
+
+
+.info i{
+  border: 2px solid #ffbf00;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #f6fbfb;
+}
+.info p{
+  color:#ffbf00 ;
+}
+.valueProposition{
+  background-color: #7288a2;
+}

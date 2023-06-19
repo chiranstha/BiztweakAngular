@@ -1,0 +1,69 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0 bg-color">
+        <h5 class="h5 mb-0 fw-bold text-white">Get Course</h5>
+        <button type="button" class="btn-close" (click)="close()" data-bs-dismiss="modal"></button>
+    </div>
+    
+      <div class="modal-body bg-primary-light">
+        <h1 class="h5">Select plans</h1>
+        <p class="my-3 col-md-6">all the modules listed below align with what is missing in your business.
+          We have identified the priority, and then recommend the order in which you should read and apply
+          the modules, in order for your report outcomes to be efficiently addressed.</p>
+        <!-- <form id="course-form" class="row" method="POST" action="https://biztweak.org.za/payment"> -->
+          <div class="div" class="row">
+
+            <input type="hidden" name="_token" value="4Tc7rG5KJF2L7FzUepHg6utgfe6uoNruyJprPK8f">
+          <div class="col-md-4 my-3 cp">
+            <label class="d-flex bg-white p-2">
+              <span style="background: #ffc5c5;" class="priority">2</span>
+              <img src="https://biztweak.org.za/new/images/market.png" class="img-fluid rounded-circle me-3"
+                style="height: 60px;width: 60px;" alt="">
+              <div>
+                <h6>Market Intelligence
+                </h6>
+                <h1 class="h4 font-weight-bold">Free <input name="course[]" value="Market Intelligence" data-value="50"
+                    type="checkbox"></h1>
+              </div>
+            </label>
+          </div>
+          <div class="col-md-4 my-3 cp">
+            <label class="d-flex bg-white p-2">
+              <span style="background: #aef6ae;" class="priority">5</span>
+              <img src="https://biztweak.org.za/new/images/talent.png" class="img-fluid rounded-circle me-3"
+                style="height: 60px;width: 60px;" alt="">
+              <div>
+                <h6>Talent Management
+                </h6>
+                <h1 class="h4 font-weight-bold">Free <input name="course[]" value="Talent Management" data-value="40"
+                    type="checkbox"></h1>
+              </div>
+            </label>
+          </div>
+          <div class="col-md-4 my-3 cp">
+            <label class="d-flex bg-white p-2">
+              <span style="background: #b0b0ff;" class="priority">8</span>
+              <img src="https://biztweak.org.za/new/images/product.png" class="img-fluid rounded-circle me-3"
+                style="height: 60px;width: 60px;" alt="">
+              <div>
+                <h6>Product Development
+                </h6>
+                <h1 class="h4 font-weight-bold">Free <input name="course[]" value="Product Development" data-value="40"
+                    type="checkbox"></h1>
+              </div>
+            </label>
+          </div>
+          <input type="hidden" name="total" id="total-inp" value="130">
+          <div class="col-12 my-4 text-end">
+
+            <button class="btn btn-info px-5" (click)="navigatetoPayment()" >Checkout</button>
+          </div>
+          </div>
+          
+        <!-- </form> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+﻿<div
+  bsModal
+  #createOrEditModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createOrEditModal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="form" autocomplete="off">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span *ngIf="this.id">{{ l('Edit Assignment Type') }}</span>
+            <span *ngIf="!this.id">{{ l('Create New Assignment Type') }}</span>
+          </h4>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+        </div>
+        
+        <div class="modal-body">
+          <div class="my-3">
+            <label class="form-label" for="name">{{ l('Name') }} <span class="required-field">*</span></label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              required
+              [ngClass]="{'is-invalid': form.get('name').invalid && (form.get('name').dirty || form.get('name').touched),
+              'is-valid': form.get('name').valid && (form.get('name').dirty || form.get('name').touched)}"
+            />
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="description">{{ l('description') }} <span class="required-field">*</span></label>
+            <input
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
+          <button
+            type="submit"
+            class="btn btn-primary blue"
+            [disabled]="this.form.invalid"
+            [buttonBusy]="saving"
+            [busyText]="l('SavingWithThreeDot')"
+            (click)="save()"
+          >
+            <i class="fa fa-save" ></i>
+            <span>{{ l('Save') }}</span>
+          </button>
+        </div>
+           {{this.form.getRawValue()|json}}
+      </form>
+    </div>
+  </div>
+</div>
